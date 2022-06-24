@@ -6,7 +6,7 @@ include_once('db/conexionDB.php');
 
 ?>
 <div class="container">
-<table class="table  table-light">
+<table class="table  table-primary">
 <thead>
     <tr>
       <th scope="col">Fecha</th>
@@ -41,9 +41,9 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
      ?> </td>
 
 
-<?php echo "  <td> <a  class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'>Seleccionar</a>  </td>" ?>
+<?php echo "  <td> <a  class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'>Seleccionar</a> " ?>
 
-      <td><input name="modificar" type="submit" value="Eliminar" class="btn btn-outline-danger" /></td>
+      <input name="modificar" type="submit" value="Eliminar" class="btn btn-outline-danger" /></td>
       </td>
     </tr>
     <?php } ?>

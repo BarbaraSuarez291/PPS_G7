@@ -122,7 +122,7 @@ function datosDeNuevoUsuario($unArray)
       'nombre' => trim($unArray['nombre']),
       'apellido' => $unArray['apellido'],
       'email' => trim($unArray['email']),
-      'password' => password_hash($unArray['password'], PASSWORD_DEFAULT),
+      'clave' => password_hash($unArray['password'], PASSWORD_DEFAULT),
       'rol' => 'user',
 
     ];
@@ -147,8 +147,8 @@ function registrarUsuario($user, $conexion)
   $nombre = $user['nombre'];
   $apellido = $user['apellido'];
   $email = $user['email'];
-  $password = $user['password']; // se encripta en la funcion 'datosDeNuevoUsuario'
-  $consulta = "INSERT INTO `usuarios` (`email`, `password`, `rol`, `nombre`,`apellido`) VALUES ('$email','$password', '$rol', '$nombre', '$apellido')";
+  $password = $user['clave']; // se encripta en la funcion 'datosDeNuevoUsuario'
+  $consulta = "INSERT INTO `usuarios` (`email`, `clave`, `rol`, `nombre`,`apellido`) VALUES ('$email','$password', '$rol', '$nombre', '$apellido')";
 
   //Paso 5: Ejecupatmos la consulta SQl
 
@@ -169,7 +169,7 @@ function ingresoUsuario($email, $password, $conexion)
   $usuario = mysqli_query($conexion, $consulta);
   $fila = mysqli_fetch_assoc($usuario);
   if ($fila) {
-    if (password_verify($password , $fila['password'])) {
+    if (password_verify($password , $fila['clave'])) {
       return $fila;
     } else {
       return false;

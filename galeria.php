@@ -9,12 +9,10 @@ $tipo = '';
 /*
 $resultado = $conexion->query($consulta);
 $rows = $resultado->num_rows;
-
 //si la consulta trae un valor crea la consulta usuario
 if($rows > 0 ){
     $row = $resultado->fetch_assoc();
     $id = $row['idArchivo'];
-
 }
 else{
     echo "<script>
@@ -36,11 +34,12 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 <body>
 <?php include_once('includes/nav.php');
-      include_once('includes/navNosotros.php');
+      include_once('includes/navNosotros.php'); 
 ?>
     <div class="container-galeria">
+        
         <div class="galeria">
-            <main class="container" style="width:100%;">
+            <main class="container">
                 <div class="row">
                     <div class="col s12 center-align">
 
@@ -87,11 +86,7 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 
 
-  <!-- jquery, popper.js y bootstrap js -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-   
+
 
 
 
@@ -100,6 +95,14 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 
     <script src='js/galeria.js'> </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 </body>
 

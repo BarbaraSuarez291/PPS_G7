@@ -106,7 +106,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  background-color: #F9F3DF;
+  background-color: rgb(243, 230, 210, .3)!important;
   font-family: 'Open Sans', sans-serif;
 }
 h2 {
@@ -143,9 +143,10 @@ h2 {
 /** Header **/
 div.hero {
   background-image: url(../img/fondo.jpg);
-  height: 100vh;
+  height: 90vh;
   background-position: top center;
   background-size: cover;
+  margin-top: 120px;
 }
 div.contenido-header {
   padding-top: 40px;
@@ -155,8 +156,14 @@ div.contenido-header {
     padding-top: 10px;
   }
 }
+@media only screen and (max-width:900px){
+  div.hero {
+    height: 67vh;
+  }
+}
 nav.redes-sociales {
   text-align: center;
+  margin-top: 1rem;
 }
 nav.redes-sociales a {
   color: #F9F3DF;
@@ -170,7 +177,7 @@ nav.redes-sociales a:last-child{
   div.informacion-ballet {
     width: 70%;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 5rem;
   }
 }
 div.informacion-ballet{
@@ -182,6 +189,7 @@ div.informacion-ballet p{
   display: inline;
   font-size: 20px;
   text-transform: uppercase;
+  
 }
 div.informacion-ballet p i {
   color: #FE4918;
@@ -200,6 +208,8 @@ h1.nombre-sitio {
   font-size:  5.9vw;
   text-transform: uppercase;
   font-family: 'Xanh Mono', monospace;
+  font-weight:lighter;
+  color:rgb(255, 255, 255, 0.8);
 }
 @media only screen and (min-width:768px) {
   h1.nombre-sitio {
@@ -208,13 +218,33 @@ h1.nombre-sitio {
     line-height: 1.5;
   }
 }
+@media only screen and (max-width:768px) {
+  h1.nombre-sitio {
+    font-size:  11vw;
+    margin: 0;
+    line-height: 1.5;
+  }
+  div.informacion-ballet p{
+    margin: 0;
+    display: inline;
+    font-size: 2vw;
 
+  }
+
+}
 
 /** Barra **/
 div.barra {
-  background:#d7a86e!important;
+  background-color:#f3e6d2;
   padding: 20px 0;
   z-index: 500;
+  position: fixed;
+  width:100%;
+  top: 0;
+  transition: 1.2s;
+  box-shadow: 10px 5px 5px rgb(0, 0, 0, .3);
+
+
 
 }
 div.logo {
@@ -236,11 +266,12 @@ div.logo img {
 /** Nav Principal **/
 nav.navegacion-principal{
   display: none;
-  background-color:#D7A86E;
+  
+
 }
-nav.navegacion-principal a{
+nav.navegacion-principal ul li a{
   font-family: 'Xanh Mono', monospace;
-  color: #F9F3DF;
+  color: #686464;
   font-size: 1.3em;
   text-transform: uppercase;
   text-decoration: none;
@@ -252,7 +283,6 @@ nav.navegacion-principal a{
 }
 nav.navegacion-principal a:hover{
   background-color:#d7a86e!important;
-  ;
 }
 @media only screen and (min-width: 768px) {
   nav.navegacion-principal {
@@ -463,12 +493,17 @@ h2 {
 
 /** Footer **/
 .footer {
-  background-color: #D7A86E;
+  background-color:#f3e6d2;
   padding: 1rem 0;
-  margin-top: 2rem;
+  margin-top: 10rem;
+  bottom: 0;
+
+  width:100%;
+  box-shadow: 10px 5px 5px 10px rgb(0, 0, 0, .4);
+
 }
 .footer__texto{
-  color: #F9F3DF;
+  color: #686464;
   font-family: 'Xanh Mono', monospace;
   text-align: center;
   font-size: 2.2rem;

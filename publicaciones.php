@@ -10,10 +10,10 @@ include_once('includes/head.php'); ?>
 
 <body>
 
-  <?php include_once('includes/nav.php');
-  include('includes/navNosotros.php');
+  <?php include_once('includes/nav.php');?>
 
-  ?>
+
+ <?php include('includes/navNosotros.php');  ?>
 
 
 
@@ -28,8 +28,11 @@ include_once('includes/head.php'); ?>
     $resultado2 = mysqli_query($conexion, $consulta2);
 
   ?>
-    <div>
-      <div class="col-md-5 container-fluid column  mt-4 d-flex justify-content-center">
+    <div style="margin-top:100px;">
+      <div class="col-md-5 container-fluid column  mt-4 d-flex justify-content-center" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-duration="500"
+     data-aos-easing="ease-in-sine">
         <div class="card">
           <div class="text-right m-2">
             <p><?php echo $fila['fecha'] ?></p>
@@ -65,6 +68,14 @@ include_once('includes/head.php'); ?>
 
 
   <script src='js/galeria.js'> </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 </body>
 
