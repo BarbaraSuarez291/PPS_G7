@@ -6,6 +6,7 @@ include('includes/funciones.php');
 
 
 if (!empty($_POST)) {
+   
     try {
     $tipoPublicacion = "evento";
     $fecha = date('Y-m-d');
@@ -27,11 +28,13 @@ if (!empty($_POST)) {
         if ($row = mysqli_fetch_row($rs)) {
             $idPublicacion = trim($row[0]);
         }
-
-        //extensiones validados
-        $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
-        verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
-    }
+    
+     //extensiones validados
+     $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
+     verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
+ 
+        }
+       
 } else {
     echo 'Error al insertar la publicacion ' . mysqli_error($conexion);
 }

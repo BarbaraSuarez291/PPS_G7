@@ -27,4 +27,3 @@ include_once('head.php');
 </div>
 </div>
 </nav>
-

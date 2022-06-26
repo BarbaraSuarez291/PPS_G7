@@ -1,3 +1,4 @@
+
 <div class="contenedor_car_nosotros">
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -42,7 +43,7 @@
 
 <div id="gal"></div>
 
-
+<!--
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
   <nav   class="navbar navbar-dark bg-dark">
@@ -62,5 +63,29 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
+</nav> -->
+<div width="100%" style="display:flex; justify-content:center; align-items:center;">
+  <div class="nav nav-tabs text-center nav-nosotros" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Publicaciones</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile_" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Fotos</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Videos</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-work" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Trabaja con nosotros</button>
+ 
+  </div>
+  </div>
 </nav>
+<div class="tab-content" id="nav-tabContent ">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> <?php include_once("historia.php"); ?></div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><?php include_once("publicaciones.php"); ?></div>
+  <div class="tab-pane fade" id="nav-profile_" role="tabpanel" aria-labelledby="nav-profile-tab"><?php include_once("galeria.php"); ?></div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><?php include_once("videos.php")?>;</div>
+  <div class="tab-pane fade" id="nav-work" role="tabpanel" aria-labelledby="nav-contact-tab"><?php include_once("trabajaConNosotros.php")?>;</div>
+
+
+</div>
+
+<nav>
+
+
 

@@ -1,4 +1,10 @@
+<?php
+include_once('includes/funciones.php');
+include_once('includes/navAdmin.php');
+include_once('db/conexionDB.php');
 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
