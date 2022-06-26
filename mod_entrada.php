@@ -16,10 +16,10 @@
     $nombre = $_POST['nombre'];
     $precio = $_POST['precio'];
     $descripcion = $_POST['descripcion'];
-    $fecha = $_POST['fecha'];
+    $fecha = $_POST['cantidad'];
 
  //Aca la actualizamos
-    $actulizar_entrada = "UPDATE entradas SET nombre='$nombre', precio='$precio', descripcion='$descripcion', fecha='$fecha' WHERE id ='$id'";
+    $actulizar_entrada = "UPDATE entradas SET nombre='$nombre', precio='$precio', descripcion='$descripcion', cantidad='$cantidad' WHERE id ='$id'";
     $respuesta = mysqli_query($conexion,$actulizar_entrada);
 
   if ($respuesta = true){

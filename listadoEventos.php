@@ -49,7 +49,7 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
 <?php 
 echo "  <td> <a class='pencil' class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'><i class='fa-solid fa-pencil'></i></a> ";
  echo "   <a class='trash'  class='btn btn-outline-danger' href='eliminarEvento.php?id=" . $fila['idPublicacion'] . "'><i class='fa-regular fa-trash-can'></i></a> " ;
-echo "   <a  class='ticket' href='eliminarPubl.php?id=" . $fila['idPublicacion'] . "'> <i class='fa-solid fa-ticket'></i> </a></td>" ;
+echo "   <a  class='ticket' href='crearEntrada.php?id=" . $fila['idPublicacion'] . "'> <i class='fa-solid fa-ticket'></i> </a></td>" ;
 
 ?>
       </td>
