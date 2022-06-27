@@ -6,7 +6,7 @@ include_once('includes/head.php'); ?>
 
 
 
-<div class="contenedor_histo " style="margin-top:3rem;">
+<div class="contenedor_histo " style="margin-top:3rem; margin-bottom:4rem;">
 <div class="contenedor_histo_info">
 <div class="container" >
     <h1 data-aos="fade-right"  data-aos-duration="500">Nosotros</h1>

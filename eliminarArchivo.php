@@ -1,6 +1,6 @@
 <?php 
 include_once('includes/funciones.php');
-include_once('includes/navAdmin.php');
+
 include_once('db/conexionDB.php');
 
 
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
             }
 
 
-
+            include_once('includes/navAdmin.php');
 
         echo   " <form action='#' method='post'>";
             $extension = devuelve_extension_de_archivo($fila['tipo']);

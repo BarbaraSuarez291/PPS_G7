@@ -582,6 +582,22 @@ text-transform: uppercase;
 }
 
 
+/*Eventos cards*/
+.titulo_evento_card {
+    font-weight: lighter;
+    padding:1rem;
+}
+.descrip {
+    font-weight: lighter;
+    padding:1rem;
+}
+.titulo_eventos {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    width: 100%;
+    font-family: "Xanh Mono";
+}
+
 @media (max-width: 1500px) {
     .carousel h5 {
         font-size: 30px;
