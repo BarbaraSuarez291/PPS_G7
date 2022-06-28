@@ -1,6 +1,6 @@
 <?php
 include_once('includes/funciones.php');
-include_once('includes/navAdmin.php');
+
 include_once('db/conexionDB.php');
 
 $error = false;
@@ -26,7 +26,7 @@ if (isset($_POST['modificar']) && empty($_POST['fechaEvento'])) {
     $message = "El campo fecha esta vacio.";
     header("refresh: 2;");
 }
-
+include_once('includes/navAdmin.php');
 ?>
 
 <div class="container" style="margin-top:1.5rem;font-size:1.3rem;">

@@ -11,7 +11,7 @@ include_once('db/conexionDB.php');
 <div>
     <h1>Publicaciones</h1>
   </div>
-  <div class="pencil">
+  <div >
     <a href="upload.php"><i class="fa-solid fa-circle-plus"></i></a>
   </div>
 <table class="table  table-light">

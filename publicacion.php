@@ -43,7 +43,7 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
         <div class="galeria">
 
             <main class="container" style="width:100%; margin-top:10rem;">
-            <div class="card text-center">
+            <div class=" text-center">
             <?php if($tipoPublicacion == "evento") { ?>
             <div class="text-right m-2">
                                 <h2 class="titulo_evento_card"><?php echo "Te esperamos el " . $fechaEvento ?></h2>
@@ -56,14 +56,14 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
                 } ?>
             </div>
                 </div>
-                <div class="row galeria">
+                <div class="row galeria ">
                     <?php
                     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where idPublicacion='$id'";
                     $resultado2 = mysqli_query($conexion, $consulta2);
                     while ($fila = mysqli_fetch_array($resultado2)) {
                     ?>
-                        <div class="col-md-3 m-2 text-center">
-                            <div class="material-placeholder">
+                        <div class="col-md-3 m-2 text-center ">
+                            <div class="material-placeholder ">
                                 <?php
                                 $extension = new SplFileInfo($fila['tipo']);
                                 $extension->getExtension();

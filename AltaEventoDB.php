@@ -32,7 +32,7 @@ if (!empty($_POST)) {
      //extensiones validados
      $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
      verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
- 
+     header('Location:listadoEventos.php');
         }
        
 } else {

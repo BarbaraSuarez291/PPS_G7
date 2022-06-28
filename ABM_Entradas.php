@@ -43,6 +43,7 @@ include_once('db/conexionDB.php');
             <td> Titulo</td>
             <td> Precio</td>
             <td> Descripcion</td>
+            <td> Cantidad</td>
             <td> Fecha evento</td>
           </tr>
         <?php
@@ -59,6 +60,7 @@ include_once('db/conexionDB.php');
             <td> <?php echo $fila['nombre'];?></td>
             <td> <?php echo $fila['precio'];?></td>
             <td> <?php echo $fila['descripcion'];?></td>
+            <td> <?php echo $fila['cantidad'];?></td>
             <td> <?php echo $fila2['fechaEvento'];?></td>
             <td><a href="actualizar_entrada.php?id=<?php echo $fila['id'] ?>" class="btn btn-info">Editar</a></td>
             <td><a href="delete_entrada.php?id=<?php echo $fila['id'] ?>" class="btn btn-danger">Eliminar</a></td>              

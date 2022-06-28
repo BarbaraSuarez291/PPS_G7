@@ -132,7 +132,7 @@ include_once('includes/nav.php');
       </thread>
 
         <?php
-        echo "<form action='#' ";
+      //  echo "<form action='#' ";
         $consulta = "SELECT * FROM  reseñas ";
         $resultado = mysqli_query($conexion,$consulta);
         while ($fila = mysqli_fetch_array($resultado)) {
@@ -163,17 +163,17 @@ include_once('includes/nav.php');
             <div class="contenedor-campos">
                   <div class="campo">
                       <label>Nombre</label>
-                      <input class="input-text" type="nombre" name="nombre" placeholder="Tu Nombre">
+                      <input class="input-text" type="nombre" name="nombre" placeholder="Tu Nombre" required>
                   </div>
 
                   <div class="campo">
                     <label>Teléfono</label>
-                    <input class="input-text" type="telefono" name="telefono" placeholder="Tu Teléfono">
+                    <input class="input-text" type="telefono" name="telefono" placeholder="Tu Teléfono" required>
                   </div>
 
                   <div class="campo">
                       <label>Correo</label>
-                      <input class="input-text" type="email" name="email" placeholder="Tu Email">
+                      <input class="input-text" type="email" name="email" placeholder="Tu Email" required>
                   </div>
 
                   <div class="campo">

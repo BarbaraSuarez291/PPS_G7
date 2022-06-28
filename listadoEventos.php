@@ -9,7 +9,7 @@ include_once('db/conexionDB.php');
   <div>
     <h1>Eventos</h1>
   </div>
-<div class="pencil">
+<div >
     <a href="uploadEventos.php"><i class="fa-solid fa-circle-plus"></i></a>
   </div>
 <table class="table  table-light">
