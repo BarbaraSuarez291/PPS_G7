@@ -326,6 +326,7 @@ form input{
     position: absolute;
     margin-top: 45px;
     margin-left: 20px;
+    font-size:15px;
 }
 .err-input{
     display: flex;
@@ -618,6 +619,50 @@ text-transform: uppercase;
 }
 .gallery img:hover{
     flex:4;
+}
+#cars_inicio {
+    padding:2rem;
+}
+#cars_inicio .card{
+    transition: transform .6s;
+
+
+}
+#cars_inicio .card:hover{
+    box-shadow: 10px 5px 5px rgb(0, 0, 0,0.6);
+    transform: scale(1.1);
+    opacity: 1;
+
+}
+
+/* entradas  */
+.entrada_evento{
+max-width: 35rem;
+background-color: #ffffff;
+}
+.entradas {
+margin : 0 auto;
+padding : 1rem;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+max-width: 35rem;
+background-color: #ffffff;
+}
+.entradas h2{
+    font-weight: lighter;
+}
+.card_entradas h5{
+    text-transform: capitalize;
+    font-size:1rem;
+    font-family: none;
+    font-weight: lighter;
+    font-size:2rem;
+    padding: 2rem;
+}
+.card_entradas div {
+    margin: 13px;
 }
 
 @media (max-width: 1500px) {

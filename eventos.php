@@ -63,7 +63,9 @@ include_once('includes/funciones.php'); ?>
                         <?php
                         if ($idEntrada) {
                         ?>
-                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idEntrada['id'] ?>?idPublicacion=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Click aqui para comprar entradas  </a></div>
+                        <form action="entrada.php" method="get">
+                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Click aqui para comprar entradas  </a></div>
+                        </form>
                         <?php } ?>
                         <div class="text-center"> <a href="">
                                 <h3> Para mas info contactanos a traves de nuestras redes.. </h3>
@@ -86,7 +88,7 @@ include_once('includes/funciones.php'); ?>
     }
     ?>
 
-
+<?php include_once('includes/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src='js/galeria.js'> </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
