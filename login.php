@@ -5,7 +5,6 @@ include_once('includes/head.php');
 include_once('includes/nav.php');
 include_once('includes/funciones.php');
 
-
 $error = false;
 if (isset($_POST['email']) && isset($_POST['password'])) {
   $email = $_POST['email'];
@@ -19,7 +18,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $error = true;
   }
 }
-
 
 
 
