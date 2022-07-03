@@ -6,6 +6,12 @@ include_once('db/conexionDB.php');
 
 ?>
 <div class="container">
+  <div>
+    <h1>Eventos</h1>
+  </div>
+<div class="pencil">
+    <a href="uploadEventos.php"><i class="fa-solid fa-circle-plus"></i></a>
+  </div>
 <table class="table  table-light">
 <thead>
     <tr>
@@ -39,9 +45,13 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
     }
   }
      ?> </td>
-<?php echo "  <td> <a  class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'>Seleccionar</a>  </td>" ?>
 
-<?php echo "  <td> <a  class='btn btn-outline-danger' href='eliminarPublicacion.php?id=" . $fila['idPublicacion'] . "'>Eliminar Evento</a>  </td>" ?>
+<?php 
+echo "  <td> <a class='pencil' class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'><i class='fa-solid fa-pencil'></i></a> ";
+ echo "   <a class='trash'  class='btn btn-outline-danger' href='eliminarEvento.php?id=" . $fila['idPublicacion'] . "'><i class='fa-regular fa-trash-can'></i></a> " ;
+echo "   <a  class='ticket' href='eliminarPubl.php?id=" . $fila['idPublicacion'] . "'> <i class='fa-solid fa-ticket'></i> </a></td>" ;
+
+?>
       </td>
     </tr>
     <?php } ?>

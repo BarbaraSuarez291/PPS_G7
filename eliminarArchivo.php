@@ -15,8 +15,11 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($conexion, $query);
     if (!empty($result)) {
         while ($fila = mysqli_fetch_array($result)) {
+           
             if (isset($_POST['eliminar'])) {
                 eliminarArchivo($conexion, $id, $idPublicacion);
+                $url= 'modificarArchivos.php?id='.$idPublicacion;
+                header('location:modificarArchivos.php?id=' . $idPublicacion);
             }
 
 
@@ -30,7 +33,7 @@ if (isset($_GET['id'])) {
                 echo "<td><div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width='360' height='270'></video> </div>";
             }
            echo "<input name='eliminar' type='submit' value='Eliminar' class='btn btn-outline-danger' /> " ;
-
+          
         }
     }else {
        echo "Foto eliminada";

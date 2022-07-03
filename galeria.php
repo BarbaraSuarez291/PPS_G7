@@ -33,54 +33,52 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 
 <body>
-<?php include_once('includes/nav.php');
-      include_once('includes/navNosotros.php'); 
+<?php
+include_once('includes/nav.php');
+include_once('includes/navNosotros.php');
+include_once('includes/funciones.php');
 ?>
     <div class="container-galeria">
-        
+
         <div class="galeria">
             <main class="container">
-                <div class="row">
-                    <div class="col s12 center-align">
-
-                    </div>
-                </div>
-                <div class="row galeria">
+              
                     <?php
                     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` order by idArchivo desc";
                     $resultado2 = mysqli_query($conexion, $consulta2);
 
                     while ($fila = mysqli_fetch_array($resultado2)) {
                     ?>
-                        <div class="col-md-3"><!-- col s12 m4 l3 -->
-                            <div class="material-placeholder">
+
                                 <?php
 
                                 /* echo " ID: " . $fila['idArchivo'] . "<br>";
     echo  " Tipo: " .$fila['tipo'] . "<br>";*/
-                                $extension = new SplFileInfo($fila['tipo']);
-                                $extension->getExtension();
-                                $extension = strtolower($extension);
+                                $extension =devuelve_extension_de_archivo($fila['tipo']);
                                 if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-                                    echo  "<div class='box-img-video fotos mt-2'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
-                                } else {
-
-                                    echo "<div class='box-img-video videos mt-2'> <video  class='materialboxed'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width=' 260' height='170'></video> </div>";
+                                $archivos[] = base64_encode($fila['contenido']);
                                 }
-
-                                ?>
-
-                            </div>
-                        </div>
+                                
+                    }
+                    ?>
+                    <div class="row galeria">
+                    <div class="text-center"><!-- col s12 m4 l3 -->
+                    <div class="material-placeholder wrapper">
                     <?php
-                    } ?>
-                    
+                    for($i=0; $i<count($archivos); $i++){
+                      //  echo  "<div class='box-img-video fotos mt-2'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
+                    echo  "<div class='box-img-video fotos mt-2'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . ($archivos[$i]) . "'> </div>";
+
+                    }
+                    ?>
+                       </div>
+                        </div>
                 </div>
             </main>
         </div>
 
     </div>
-    <?php include_once('includes/footer.php'); ?>
+ 
     
 
 

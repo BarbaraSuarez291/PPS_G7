@@ -11,6 +11,7 @@ include_once('includes/funciones.php'); ?>
 
 <body>
 
+
     <?php include_once('includes/nav.php');
     //verifica las fechas de los eventos si el evento ya paso lo elimina
     verificarFechaEvento($conexion);
@@ -20,7 +21,10 @@ include_once('includes/funciones.php'); ?>
   //lista de todas la publicacines
     $consulta =  "SELECT * FROM publicaciones WHERE `tipo`='evento' ORDER BY fechaEvento ASC";
     $resultado = mysqli_query($conexion, $consulta);
+if ($fila = mysqli_fetch_array($resultado)) {
+    # code...
 
+  
     while ($fila = mysqli_fetch_array($resultado)) {
         $idPublicacion = $fila['idPublicacion'];
         $fechaEvento = $fila['fechaEvento'];
@@ -28,7 +32,8 @@ include_once('includes/funciones.php'); ?>
         $resultado2 = mysqli_query($conexion, $consulta2);
 
     ?>
-        <div>
+        <div style="margin-top:15rem;">
+
             <div class="col-md-5 container-fluid column  mt-4 d-flex justify-content-center">
                 <div class="card">
                <!--     <div class="text-right m-2">
@@ -68,11 +73,15 @@ include_once('includes/funciones.php'); ?>
         </div>
 
 
-    <?php } ?>
+    <?php } 
+    }else{
+        echo "<div style='margin-top:15rem; 'class='d-flex justify-content-center text-center'> <div> <h4> Ups, no hay nada por aqui todavia... </h4> </div> </div>";
+        
+    }
+    ?>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
     <script src='js/galeria.js'> </script>
 
 </body>

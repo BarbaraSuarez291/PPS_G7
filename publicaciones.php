@@ -3,22 +3,6 @@
 <?php
 include_once('db/conexionDB.php');
 include_once('includes/head.php'); ?>
-
-<head>
-  <title>Publicaciones</title>
-</head>
-
-<body>
-
-  <?php include_once('includes/nav.php');?>
-
-
- <?php include('includes/navNosotros.php');  ?>
-
-
-
-
-
   <?php //lista de todas la publicacines
   $consulta =  "SELECT * FROM publicaciones WHERE `tipo`='galeria' ORDER BY idPublicacion DESC";
   $resultado = mysqli_query($conexion, $consulta);

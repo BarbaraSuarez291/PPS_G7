@@ -4,9 +4,17 @@ include_once('includes/navAdmin.php');
 include_once('db/conexionDB.php');
 
 
+
+
 ?>
 <div class="container">
-<table class="table  table-primary">
+<div>
+    <h1>Publicaciones</h1>
+  </div>
+  <div class="pencil">
+    <a href="upload.php"><i class="fa-solid fa-circle-plus"></i></a>
+  </div>
+<table class="table  table-light">
 <thead>
     <tr>
       <th scope="col">Fecha</th>
@@ -21,6 +29,7 @@ include_once('db/conexionDB.php');
   $resultado = mysqli_query($conexion, $consulta);
   while ($fila = mysqli_fetch_array($resultado)) {
     $idPublicacion = $fila['idPublicacion'];
+   // $_POST['idPublicacion']=$idPublicacion;
     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion' LIMIT 1";
     $resultado2 = mysqli_query($conexion, $consulta2);
   ?>
@@ -41,9 +50,12 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
      ?> </td>
 
 
-<?php echo "  <td> <a  class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'>Seleccionar</a> " ?>
+<?php echo "  <td> <a class='pencil'  href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'><i class='fa-solid fa-pencil'></i></a> ";
+ echo "   <a  class='trash' href='eliminarPublicacion.php?id=" . $fila['idPublicacion'] . "'><i class='fa-regular fa-trash-can'></i></a> </td>" ;
 
-      <input name="modificar" type="submit" value="Eliminar" class="btn btn-outline-danger" /></td>
+?>
+
+</td>
       </td>
     </tr>
     <?php } ?>

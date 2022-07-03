@@ -65,7 +65,7 @@ function verificarFechaEvento($conexion)
 
     while ($fila = mysqli_fetch_array($resultado)) {
 
-        if ($fechaActual > $fila['fechaEvento']) {
+        if ($fechaActual >= $fila['fechaEvento'] ) {
             $idPublicacion = $fila['idPublicacion'];
             $query = "DELETE FROM `publicaciones` WHERE `idPublicacion` = '$idPublicacion'";
             $result = mysqli_query($conexion, $query);
@@ -73,6 +73,7 @@ function verificarFechaEvento($conexion)
             $result2 = mysqli_query($conexion, $query2);
             header('Location:eventos.php');
         }
+
     }
 
     return true;
