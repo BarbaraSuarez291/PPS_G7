@@ -220,16 +220,66 @@ function traer_archivos($idPublicacion,$conexion){
 }
 
 
-function verificar_disponibilidad_entradas($cant, $cantidad_pedida){
-  $cant = intval($cant);
-if($cant <= $cantidad_pedida){
-  //si hay entradas disponibles retorna false teniendo encuenta que se va a guardar una variable de error como falso
+function verificar_disponibilidad_entradas($cantidad_pedida ,$cantTotal ){
+if (intval($cantTotal)== 0) {
   return false;
-}else {
+} elseif(intval($cantTotal) >= intval($cantidad_pedida)){
   return true;
+}else {
+  return false;
 }
 }
 
-function datos_de_pedido($idEntrada, $cant, $user ){
+function datos_de_pedido($id, $cant, $user, $conexion , $telefono, $metodo_de_pago){
+  $entrada = traer_entrada($id, $conexion);
+  $cantidadActual = intval($entrada['cantidad']);
+  if($cantidadActual >= $cant){
+  $cantidad_actualizada = intval($entrada['cantidad']) - intval($cant);
+  if($cantidad_actualizada>= 0){
+    $query = "UPDATE  `entradas` SET `cantidad`= '$cantidad_actualizada'  WHERE `idPublicacion` = '$id'";
+    $result = mysqli_query($conexion, $query);
+    if(!$result){
+      return false;
+    } else {
+      $monto_a_pagar = $entrada['precio']*$cant;
+      $consulta = "INSERT INTO`pedidos` (`id`, `idPublicacion`, `user`, `cantidad`, `precio_total`, `telefono`, `metodo_de_pago`) VALUES (0, '$id','$user','$cant','$monto_a_pagar', '$telefono', '$metodo_de_pago' )";
+
+
+
+      $result = mysqli_query($conexion, $consulta);
+if($result){
+  return true;
+//  header("Location: Pagina.php?mensaje=".urlencode($cant));
+} else {
+return false;
+}
+    }
+  } else {
+    return false;
+  }
+
+}else {
+    return false;
+  }
 
 }
+
+
+function buscar_usuario_por_email($email, $conexion){
+$query = "SELECT * FROM usuarios WHERE `email`='$email'";
+$result = mysqli_query($conexion, $query);
+$usuario = mysqli_fetch_array($result);
+if($result){
+  return $usuario;
+}
+}
+
+function traer_ultimo_pedido_por_usuario($id, $conexion){
+  $query = "SELECT * FROM pedidos WHERE `user`='$id' ORDER BY `id` DESC"; 
+$result = mysqli_query($conexion, $query);
+$pedido = mysqli_fetch_array($result);
+if($result){
+  return $pedido;
+}
+}
+

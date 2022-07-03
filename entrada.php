@@ -1,8 +1,9 @@
 <?php
 include_once('db/conexionDB.php');
-include_once('includes/head.php');
 include_once('includes/funciones.php');
-
+include_once('includes/head.php');
+$info_pedido = "";
+var_dump($_SESSION);
 if ($_GET['id']) {
   $idPublicacion = $_GET['id'];
   $publicacion = traer_publicacion($idPublicacion, $conexion);
@@ -11,25 +12,37 @@ if ($_GET['id']) {
 }
 
 $error = false;
-if (isset($_POST['cantidad']) && isset($_POST['metodo_de_pago'])) {
+if(isset($_POST['cantidad'] )&& isset($_POST['metodo_de_pago']) && isset($_POST['contacto'])){
+if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_POST['contacto']) )  {
   $cant = $_POST['cantidad'];
   $forma_de_pago = $_POST['metodo_de_pago'];
 
-  $error = verificar_disponibilidad_entradas($cant, $entradas['cantidad']);
-  if ($error == false) {
-    //generamos un array con los dats de usuario guardados en sesion
-    $user = array(
-      'nombre' => $_SESSION['nombre'],
-      'apellido' => $_SESSION['apellido'],
-      'email' => $_SESSION['email']
-    );
-    datos_de_pedido($entradas['id'], $cant, $user);
-   // header('Location:index.php');
+  $disponibilidad_entradas = verificar_disponibilidad_entradas($cant, $entradas['cantidad']);
+  if($disponibilidad_entradas == false){
+    $error = true;
+    $message = "No hay entradas disponibles.";
   }
+  if ($error == false && isset($_POST)) {
+    if($_SESSION == null){
+      $error= true; //
+      $message = "Debe iniciar sesion para poder realizar un pedido de entradas.";
+    } else {
+      $user= buscar_usuario_por_email($_SESSION['email'], $conexion);
+      $pedido_realizado = datos_de_pedido($publicacion['idPublicacion'], $cant, $user['idusuarios'], $conexion , $_POST['contacto'], $_POST['metodo_de_pago']);
+      if($pedido_realizado == true){
+      //si el pedido fue guardado en la base de datos se busca en pedidos.php los datos del ultimo pedido realizado segun el id de usuario
+      header('Location:pedido.php?id='.urlencode($user['idusuarios']));
+      }
+    }
+  }
+} else{
+  $error= true;
+  $message = "Todos lo campos son obligatorios.";
+
 }
 
-
-include_once('includes/nav.php');
+}
+//include_once('includes/nav.php');
 ?>
 
 <body>
@@ -56,7 +69,7 @@ include_once('includes/nav.php');
       <div>
         <?php if ($error == true) : ?>
           <div class="alert alert-warning alert-dismissible fade show" style="margin-top: 120px;" role="alert">
-            <strong>Revise los datos ingresados</strong>
+            <strong><?php echo $message ?></strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         <?php endif; ?>
@@ -76,13 +89,12 @@ include_once('includes/nav.php');
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
-                  <option value="4">5</option>
-                  <option value="4">6</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
                 </select>
                 <p id="errCant" class="err-alert"></p>
               </div>
               <div>
-
                 <div class="err-input">
                   <label for="cantidad">Seleccione la cantidad:</label> <select id="metodo_de_pago" lass="content-select" name="metodo_de_pago" required>
                     <option value="0" selected>Eliga metodo de pago</option>
@@ -92,14 +104,19 @@ include_once('includes/nav.php');
                   <p id="err-metodo-de-pago" class="err-alert"></p>
                 </div>
 
-
+                <div class="err-input">
+                  <label for="contacto">Antes de terminar dejanos un numero de contacto</label> 
+                <input name="contacto" type="text" id="contacto" class="form-control">
+                <p id="err-numero-usuario" class="err-alert"></p>
+                </div>
                 <div class="text-center"> <a class='ticket' href='pedido.php?id=<?php echo $idPublicacion ?>'> <button type="input" class="btn btn-dark">Realizar pedido</button> </a></div>
             </form>
           </div>
         </form>
-
       </div>
     </div>
+
+
   </div>
 
 

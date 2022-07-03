@@ -4,10 +4,10 @@ include_once('includes/head.php');
 include_once('includes/funciones.php'); 
 
 if($_GET['id']){
-    $idPublicacion = $_GET['id'];
-    $publicacion = traer_publicacion($idPublicacion, $conexion);
-    $entradas = traer_entrada($idPublicacion, $conexion);
-    $archivos = traer_archivos($idPublicacion, $conexion);
+    $idUsuario = $_GET['id'];
+    $pedido = traer_ultimo_pedido_por_usuario($idUsuario, $conexion);
+    $publicacion = traer_publicacion($pedido['idPublicacion'], $conexion);
+
 }
 
 
@@ -16,37 +16,28 @@ include_once('includes/nav.php');
 
 <body>
 <div class="container" style="margin-top:10rem;">
-<h1>Compra tus entradas</h1>
-<h2>Fecha del evento:  <?php echo $publicacion['fechaEvento']; ?></h2>
-<h2><?php echo $publicacion['descripcion'] ?></h2>
-<?php
-$extension = devuelve_extension_de_archivo($archivos[0]['tipo']);
-
-                            if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-                                echo  "<div class='col-md-12'><img  class='responsive-img card-img-top col-md-12' src='data:image/jpeg; base64, " . base64_encode($archivos[0]['contenido']) . "'> </div>";
-                            } else {
-
-                                echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='360' height='270'></video> </div>";
-                            }
-
-?>
-
-<h2>Entradas:</h2>
 <div>
-    <?php for ($i = 0 ; $i < count($entradas); $i++){?>
-    <div class="card">
-<h5 class="card-title text-center"><?php echo $entradas[$i]['nombre'] ?></h5>
-<p><?php echo $entradas[$i]['precio'] ?></p>
-<select name="cantidad">
-<option value="0" selected>0</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
+<div class="card_entradas">
+<h1>Tu pedido fue realizado con exito!</h1>
+<h2>Detalle de compra:</h2>
+<h5>Fecha del evento:  <?php echo $publicacion['fechaEvento']; ?></h5>
+<h5><?php echo $publicacion['descripcion'] ?></h5>
 
-</select>
-    </div>
-    <?php } ?>
+<h5 class="card-title text-center"><?php //echo $entradas[$i]['nombre'] ?></h5>
+<p> Cantidad: <?php echo $pedido['cantidad'] ?></p>
+<p> Total a pagar: <?php echo $pedido['precio_total'] ?></p>
+<p>Para continuar con la compra:</p>
+<?php if($pedido['metodo_de_pago']== 'transferencia'){  ?>
+
+<p>Elegiste medio de pago como transferencia te pasamos nuestro cbu para que puedas realizarla.</p>
+<p>Una vez hecha la transferencia envianos el comprobante de pago a traves de whatsapp y posterior coordinamos la/s entrega de entrada/s.</p>
+<p>(DATOS PARA REALIZAR EL PAGO)</p>
+<?php } else { ?>
+  <p>Elegiste como medio de pago efectivo, comunicate con nosotros directamente a traves de whatsapp para coordinar pago y la entrega de las entradas.</p>
+  <?php } ?>
+<a href="https://walink.co/3a91c8"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
 </div>
 </div>
 
