@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-$consulta = "SELECT descripcion FROM `publicaciones` where idPublicacion='$id'";
+$consulta = "SELECT * FROM `publicaciones` where idPublicacion='$id'";
 
 $resultado = $conexion->query($consulta);
 $rows = $resultado->num_rows;
@@ -20,7 +20,9 @@ $rows = $resultado->num_rows;
 if($rows > 0 ){
     $row = $resultado->fetch_assoc();
     $descripcion = $row['descripcion'];
-
+    $fechaEvento = $row['fechaEvento'];
+    $fecha = $row['fecha'];
+    $tipoPublicacion = $row['tipo'];
 }
 
 /*echo " ID: " . $id . "<br>";
@@ -40,32 +42,29 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
         <div class="galeria">
 
-
-
-
-            <main class="container" style="width:100%;">
-            <div class="card">
+            <main class="container" style="width:100%; margin-top:10rem;">
+            <div class=" text-center">
+            <?php if($tipoPublicacion == "evento") { ?>
+            <div class="text-right m-2">
+                                <h2 class="titulo_evento_card"><?php echo "Te esperamos el " . $fechaEvento ?></h2>
+            </div>
+            <?php } ?>
             <div class="row">
                     <div class="col s12 center-align">
                     <?php if($descripcion != null){
-                    echo "<div class='card-header'>". $descripcion ." </div> ";
+                    echo "<div class=''>". $descripcion ." </div> ";
                 } ?>
-                    </div>
+            </div>
                 </div>
-                <div class="row galeria">
-
+                <div class="row galeria ">
                     <?php
                     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where idPublicacion='$id'";
                     $resultado2 = mysqli_query($conexion, $consulta2);
-
                     while ($fila = mysqli_fetch_array($resultado2)) {
                     ?>
-                        <div class="col-md-3 m-2">
-                            <div class="material-placeholder">
+                        <div class="col-md-3 m-2 text-center ">
+                            <div class="material-placeholder ">
                                 <?php
-
-                                /* echo " ID: " . $fila['idArchivo'] . "<br>";
-    echo  " Tipo: " .$fila['tipo'] . "<br>";*/
                                 $extension = new SplFileInfo($fila['tipo']);
                                 $extension->getExtension();
                                 $extension = strtolower($extension);
@@ -75,14 +74,11 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
                                     echo "<div class='box-img-video videos'> <video  class='materialboxed'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width=' 260' height='170'></video> </div>";
                                 }
-
                                 ?>
-
                             </div>
                         </div>
                     <?php
                     } ?>
-
                 </div>
             </main>
 
@@ -94,10 +90,20 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
     </div>
 
 
+ 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src='js/main.js'> </script>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src='js/galeria.js'> </script>
 </body>
 
 </html>

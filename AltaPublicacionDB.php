@@ -27,6 +27,7 @@ if (!empty($_POST)) {
         verificarPostArchivo($_FILES['archivo2'],$extensions_arr,$idPublicacion, $conexion);
         verificarPostArchivo($_FILES['archivo3'],$extensions_arr,$idPublicacion, $conexion);
         verificarPostArchivo($_FILES['archivo4'],$extensions_arr,$idPublicacion, $conexion);
+        header('Location:listadoPublicaciones.php');
     }
 } else {
     echo 'Error al insertar la publicacion ' . mysqli_error($conexion);

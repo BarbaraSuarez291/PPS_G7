@@ -326,6 +326,7 @@ form input{
     position: absolute;
     margin-top: 45px;
     margin-left: 20px;
+    font-size:15px;
 }
 .err-input{
     display: flex;
@@ -581,6 +582,88 @@ text-transform: uppercase;
     height: 100%;
 }
 
+
+/*Eventos cards*/
+.titulo_evento_card {
+    font-weight: lighter;
+    padding:1rem;
+}
+.descrip {
+    font-weight: lighter;
+    padding:1rem;
+}
+.titulo_eventos {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    width: 100%;
+    font-family: "Xanh Mono";
+}
+
+.gallery {
+    width: 85vw;
+    height: 60vmin;
+    display: flex;
+    gap: 5px;
+
+}
+
+.gallery img , video {
+    height: 100%;
+    flex: 1;
+    object-fit: cover;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+
+}
+.gallery img:hover{
+    flex:4;
+}
+#cars_inicio {
+    padding:2rem;
+}
+#cars_inicio .card{
+    transition: transform .6s;
+
+
+}
+#cars_inicio .card:hover{
+    box-shadow: 10px 5px 5px rgb(0, 0, 0,0.6);
+    transform: scale(1.1);
+    opacity: 1;
+
+}
+
+/* entradas  */
+.entrada_evento{
+max-width: 35rem;
+background-color: #ffffff;
+}
+.entradas {
+margin : 0 auto;
+padding : 1rem;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+max-width: 35rem;
+background-color: #ffffff;
+}
+.entradas h2{
+    font-weight: lighter;
+}
+.card_entradas h5{
+    text-transform: capitalize;
+    font-size:1rem;
+    font-family: none;
+    font-weight: lighter;
+    font-size:2rem;
+    padding: 2rem;
+}
+.card_entradas div {
+    margin: 13px;
+}
 
 @media (max-width: 1500px) {
     .carousel h5 {

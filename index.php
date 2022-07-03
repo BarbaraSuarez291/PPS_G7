@@ -47,7 +47,7 @@
 
     <div class="container" style="margin-top:10rem;">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col  "data-aos="fade-up"  data-aos-duration="500">
+        <div id="cars_inicio" class="col  "data-aos="fade-up"  data-aos-duration="500">
           <a href="galeria.php" >
             <div class="card h-100 ">
               <img src="img/ballet.jpg" class="card-img-top" alt="...">
@@ -60,7 +60,7 @@
             </div>
           </a>
         </div>
-        <div class="col">
+        <div id="cars_inicio"  class="col ">
           <a href="#redes_sociales_inicio">
             <div class="card h-100 " data-aos="fade-up"  data-aos-duration="800">
               <div class="card-body tarjetas_inicio" style="color: white; background-color: black">
@@ -72,7 +72,7 @@
             </div>
           </a>
         </div>
-        <div class="col">
+        <div id="cars_inicio"  class="col">
           <a href="eventos.php">
             <div class="card h-100 " data-aos="fade-up"  data-aos-duration="1000">
               <img src="img/ballet_2.jpg" class="card-img-top" alt="...">
@@ -116,9 +116,6 @@
 
 
 
-
-
-  
 
 
 

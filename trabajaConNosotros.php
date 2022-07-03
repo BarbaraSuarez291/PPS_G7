@@ -7,7 +7,9 @@ include_once('includes/head.php'); ?>
 
 
 <div class="contenedor_histo " style="margin-top:3rem;">
-
+<div style="padding:3rem;">
+  <h3 >Envianos tu info para sumarte a nuestro equipo</h3>
+  </div>
 </div>
 
 

@@ -13,7 +13,7 @@
     include('./LoginPHP/conexion.php');
    
     $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
     $actulizar_pass= "UPDATE usuarios SET clave='$pass' WHERE email ='$email'";
     $respuesta_nueva = mysqli_query($conexion,$actulizar_pass);

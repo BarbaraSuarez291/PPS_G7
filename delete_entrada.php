@@ -9,5 +9,5 @@ $eliminado = mysqli_query($conexion, $delete);
 
 if ($eliminado = true) {
     header("Location: ABM_Entradas.php");
-} 
+}
 ?>

@@ -3,5 +3,5 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$bd ="ballet";
+$bd ="ballet3";
 ?>

@@ -137,6 +137,7 @@ function datosDeNuevoUsuario($unArray)
 function crear_session_para($usuario)
 {
   $_SESSION['nombre'] = $usuario['nombre'];
+  $_SESSION['apellido'] = $usuario['apellido'];
   $_SESSION['email'] = $usuario['email'];
   $_SESSION['rol'] = $usuario['rol'];
 }
@@ -191,4 +192,44 @@ function existeUsuario($email, $conexion)
   } else {
     return false;
   }
+}
+//Trae  publicacion segun id
+function traer_publicacion($id, $conexion) {
+  $consulta =  "SELECT * FROM publicaciones WHERE `idPublicacion`= $id";
+  $resultado = mysqli_query($conexion, $consulta);
+  $publicacion = mysqli_fetch_array($resultado);
+  return $publicacion;
+}
+//Trae entrada segun el id de la publicacion
+function traer_entrada($id, $conexion) {
+  $consulta =  "SELECT * FROM entradas WHERE `idPublicacion`= $id";
+  $resultado = mysqli_query($conexion, $consulta);
+  $entradas= mysqli_fetch_array($resultado);
+  
+  return $entradas;
+}
+
+function traer_archivos($idPublicacion,$conexion){
+  $consulta = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion'";
+  $resultado = mysqli_query($conexion, $consulta);
+  $archivos= [];
+  while($fila = mysqli_fetch_array($resultado)){
+    $archivos[]= $fila;
+      }
+      return $archivos;
+}
+
+
+function verificar_disponibilidad_entradas($cant, $cantidad_pedida){
+  $cant = intval($cant);
+if($cant <= $cantidad_pedida){
+  //si hay entradas disponibles retorna false teniendo encuenta que se va a guardar una variable de error como falso
+  return false;
+}else {
+  return true;
+}
+}
+
+function datos_de_pedido($idEntrada, $cant, $user ){
+
 }

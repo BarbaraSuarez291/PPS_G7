@@ -14,9 +14,9 @@ include_once('db/conexionDB.php');
   <title>Ballet Folklorico - Entradas</title>
   <?php include('./LoginPHP/conexion.php');?>
 </head>
-<body>
+<body>  
 <div>
-  <div>
+  <!--<div class="container">
     <h1>Crear entradas</h1>
    <form action="alta_entrada.php" name="alta1" method="POST">
      <label>Ingrese el nombre de la entrada nueva: </label>
@@ -31,35 +31,45 @@ include_once('db/conexionDB.php');
      <input type="date" name="fecha">
      <input type="submit" name="enviar" value="Enviar">   
    </form>
-</div>
+</div> -->
+     <div class="container">
      <div>
-        <table class="table">
+    <h1>Entradas</h1>
+  </div>
+ 
+        <table class="table table-light">
           <tr>
             <td> ID de entrada</td>
-            <td> Nombre de la entrada</td>
-            <td> Precio de la entrada</td>
-            <td> Descripcion de entrada</td>
-            <td> Fecha de la entrada</td>
+            <td> Titulo</td>
+            <td> Precio</td>
+            <td> Descripcion</td>
+            <td> Cantidad</td>
+            <td> Fecha evento</td>
           </tr>
         <?php
            $consulta = "SELECT * FROM entradas";
            $a = mysqli_query($conexion, $consulta);
            while($fila = mysqli_fetch_array($a)){
+            $id = $fila['idPublicacion'];
+            $query = "SELECT fechaEvento FROM publicaciones WHERE idPublicacion=$id";
+           $result = mysqli_query($conexion, $query);
+           while($fila2 = mysqli_fetch_array($result)){
         ?> 
           <tr>
             <td> <?php echo $fila['id'];?></td>
             <td> <?php echo $fila['nombre'];?></td>
             <td> <?php echo $fila['precio'];?></td>
             <td> <?php echo $fila['descripcion'];?></td>
-            <td> <?php echo $fila['fecha'];?></td>
+            <td> <?php echo $fila['cantidad'];?></td>
+            <td> <?php echo $fila2['fechaEvento'];?></td>
             <td><a href="actualizar_entrada.php?id=<?php echo $fila['id'] ?>" class="btn btn-info">Editar</a></td>
             <td><a href="delete_entrada.php?id=<?php echo $fila['id'] ?>" class="btn btn-danger">Eliminar</a></td>              
           </tr>
         <?php
-            };  
+            } }; 
         ?>
         </table>
-    </div>    
+          </div>
 </div>
 </body>
 </html>

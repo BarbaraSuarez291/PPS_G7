@@ -42,7 +42,7 @@ try{
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Recuperacion de contraseña';
     $mail->Body    = "Hola ".$row['nombre'] .",somos del equipo de Ballet de Jesus, para poder cambiar 
-                       su contraseña ingrese a este link: <a href='http://localhost:8080/Ballet%20FolKlorico/PPS_G7/update_pass.php'> Cambar contraseña </a>";
+                       su contraseña ingrese a este link: <a href='http://localhost/PPS_G7/update_pass.php'> Cambar contraseña </a>";
 
     $mail->send();
     echo 'El correo se envio correctamente';

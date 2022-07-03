@@ -8,6 +8,8 @@ $sql="SELECT * FROM entradas WHERE id='$id'";
 $traer_entrada=mysqli_query($conexion,$sql);
 
 $fila = mysqli_fetch_array($traer_entrada);
+include_once('includes/head.php');
+include_once('includes/navAdmin.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,20 +20,41 @@ $fila = mysqli_fetch_array($traer_entrada);
   <title>Ballet Folklorico - Entradas</title>
 </head>
 <body>
-    <h1>Modificacion de entradas</h1>
-<form action="mod_entrada.php" name="mod1" method="POST">
-     <label>Ingrese el nombre de la entrada nueva: </label>
-     <input type="hidden" name="id" value="<?php echo $fila['id'] ?>">
-     <input type="text" id="nombre" name="nombre"/>
-     <br>
-     <label>Ingrese el precio de la entrada nueva: </label>
-     <input type="text" id="precio" name="precio"/>
-     <br>
-     <label>Ingrese una descripcion de la entrada nueva: </label>
-     <input type="text" id="descripcion" name="descripcion"/>
-     <br>
-     <input type="date" name="fecha">
-     <input type="submit" name="enviar" value="Enviar">   
+
+<div class="card container ">
+<div class="card-header text-center">
+    <h1>Crear entradas</h1>
+</div>
+<div class="card-body">
+<form action="mod_entrada.php" name="alta1" method="POST">
+<input type="hidden" name="id" value="<?php echo $fila['id'] ?>">
+    <label class="col-md-3 col-form-label text-md-right">Titulo: </label>
+    <div class="col-md-7 center">
+    <input class="form-control" type="text" id="nombre" name="nombre" value="<?php echo $fila['nombre']; ?>"/>
+    </div>
+    <br>
+    <label class="col-md-3 col-form-label text-md-right">Precio: </label>
+    <div class="col-md-7 center">
+    <input class="form-control" type="text" id="precio" name="precio" value="<?php echo $fila['precio']; ?>"/>
+   </div>
+    <br>
+    <label class="col-md-3 col-form-label text-md-right">Descripcion: </label>
+    <div class="col-md-7 center">
+      <input class="form-control" type="text" id="descripcion" name="descripcion" value="<?php echo $fila['descripcion']; ?>"/>
+    </div>
+    <br>
+    <label class="col-md-3 col-form-label text-md-right">Cantidad de entradas disponibles: </label>
+    <div class="col-md-7 center">
+    <input class="form-control" type="text" id="cantidad" name="cantidad" value="<?php echo $fila['cantidad']; ?>"/>
+    </div>
+    <!-- <input type="date" name="fecha"> -->
+    <div class="col-md-6 offset-md-3">
+    <input  class="btn btn-primary" type="submit" name="enviar" value="Enviar">  
+    
+    </div>
 </form>
-</body>
-</html>
+</div>
+</div>
+
+
+

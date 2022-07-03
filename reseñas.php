@@ -29,7 +29,7 @@ $ejecutar = mysqli_query($conexion, $sql);
 if(!$ejecutar){
     echo "Hubo algún error";
 } else{
-    echo "Datos guardados correctamente <br> <a href='index.html'>VOLVER</a>";
+    echo "Datos guardados correctamente <br> <a href='clases.php'>VOLVER</a>";
 }
 
 ?>
