@@ -47,6 +47,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         <a href="registro.php"> Crear una cuenta</a>
         <button class="activa-link ">Iniciar Sesion</button>
       </div>
+      <div class="botones-link login-btn">
+      <a href="recup_pass.php">¿Olvidaste tu clave?</a>
+      </div>
 
     </form>
   </div>
