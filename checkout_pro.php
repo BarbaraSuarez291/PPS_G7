@@ -41,7 +41,11 @@ include_once('includes/nav.php');
 ?>
 <div class="contenedor-boton" style="margin-top:10rem; margin-bottom:5rem;">
 <div class="cho-container"></div>
+<<<<<<< HEAD
+  <h1> Entrada para el Festival en Mar del <?php ?>Plata </h1>
+=======
   <h1> Entrada para el Festival en Mar del Plata </h1>
+>>>>>>> 26a3f6cf0bb8a870342374e2a28b1f13bd49179c
   <p>  En este festival van disfrutar de una experiencia una unica con la danza de los alumnos de nuestra academia 
        el cual daran un show que durara 2 hs.
        Comazara a las 18 hs el evento, los esperamos!!! </p>
@@ -79,7 +83,11 @@ const checkout = mp.checkout({
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+<<<<<<< HEAD
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+=======
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview');
+>>>>>>> 26a3f6cf0bb8a870342374e2a28b1f13bd49179c
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
