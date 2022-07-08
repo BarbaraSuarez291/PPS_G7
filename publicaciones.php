@@ -2,7 +2,9 @@
 <html lang="en">
 <?php
 include_once('db/conexionDB.php');
-include_once('includes/head.php'); ?>
+include_once('includes/head.php'); 
+include_once('includes/funciones.php');
+?>
   <?php //lista de todas la publicacines
   $consulta =  "SELECT * FROM publicaciones WHERE `tipo`='galeria' ORDER BY idPublicacion DESC";
   $resultado = mysqli_query($conexion, $consulta);
@@ -48,10 +50,6 @@ include_once('includes/head.php'); ?>
 
   <?php } ?>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-  <script src='js/galeria.js'> </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();

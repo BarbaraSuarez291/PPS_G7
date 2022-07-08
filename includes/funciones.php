@@ -219,6 +219,15 @@ function traer_archivos($idPublicacion,$conexion){
       return $archivos;
 }
 
+function traer_archivos_de_ultima_publicacion($conexion){
+  $consulta =  "SELECT * FROM publicaciones ORDER BY `idPublicacion` DESC LIMIT 1";
+  $resultado = mysqli_query($conexion, $consulta);
+  $publicacion = mysqli_fetch_array($resultado);
+  $archivos = traer_archivos($publicacion['idPublicacion'],$conexion);
+
+  return $archivos;
+}
+
 
 function verificar_disponibilidad_entradas($cantidad_pedida ,$cantTotal ){
 if (intval($cantTotal)== 0) {

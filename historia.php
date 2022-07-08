@@ -20,12 +20,16 @@ include_once('includes/head.php'); ?>
 
 </div>
 </div>
-
-<div class=" text-center" style="margin:top 3rem; margin: bottom 3rem!important;">
+<div class="contee">
+<div class="" style="margin:top 3rem; margin: bottom 3rem!important;">
 <div  class="" data-aos="fade-left"  data-aos-duration="900">
-<iframe width="420" height="540" src="https://www.instagram.com/p/CdXDthZDBYl/embed" frameborder="0"></iframe>
+<iframe width="320" height="440" src="https://www.instagram.com/p/CdXDthZDBYl/embed" frameborder="0"></iframe>
 </div>
-
+<div class="galeria__foto">
+      <img src="img/ballet2.gif" class="galeria__img">
+     
+    </div>
+    </div>
 </div>
 
 <!--

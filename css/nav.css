@@ -1,0 +1,128 @@
+
+/** Barra **/
+div.barra {
+    /*background-color:#e6a443;*/
+  /*  padding: 0;
+    z-index: 500;
+    position: fixed;
+    width:100%;
+    top: 0;
+    transition: 1.2s;*/
+   /* box-shadow: 10px 5px 5px rgb(0, 0, 0, .3);*/
+  }
+  div.logo {
+    width: 70%;
+    float: left;
+    display:flex;
+    justify-content: flex-end;
+  }
+  div.logoo {
+   display:flex;
+    justify-content: flex-end;
+  }
+  div.logo img {
+    width: 300px;
+  }
+  
+  
+  
+  /** Nav Principal **/
+  
+  #btn-menu {
+    display: none!important;
+  
+  }
+  #imagen-menu {
+    display: none;
+  
+  }
+  
+  header label {
+    display: none;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-right: 1px solid rgb(184, 86, 179) ;
+  }
+  header label:hover {
+    cursor: pointer;
+    background: rgba(252, 193, 139, 0.3) ;
+  }
+  
+  .menu{
+  /* background: rgb(215, 168, 110);*/
+  z-index: 500;
+  position: fixed;
+  width:100%;
+  top: 0;
+   margin-top: 0;
+   align-items: center;
+   width: 100%;
+   box-shadow: 5px 10px 10px 5px rgb(0, 0, 0, .4);
+  }
+  .menu ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .menu li{
+    margin: 0;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .menu li:hover{
+   background:  rgb(244, 209, 155, 0.9);
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  
+  @media (max-width:768px){
+  
+    #imagen-menu {
+        display:block;
+      }
+      
+    header label{
+        display: block !important;
+    }
+    .menu {
+        position: absolute;
+        background: rgb(215, 168, 110, 0.3);
+        margin-left: -70%;
+        transition: all 0.5s;
+        width: 70%;
+        margin-top: 40px!important;
+    }
+    .menu ul{
+        flex-direction: column;
+        background-color:rgb(243, 230, 210, 0.8);
+        
+    }
+    .menu li{
+        width: 100%;
+        border-top: 1px solid #fff ;
+    }
+    .menu li a{
+ height: 100%;
+    }
+    #btn-menu:checked ~ .menu {
+        margin: 0;
+  
+    }
+  
+  }
+  
+  
+  
+  
+  

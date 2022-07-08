@@ -146,7 +146,7 @@ div.hero {
   height: 90vh;
   background-position: top center;
   background-size: cover;
-  margin-top: 120px;
+ 
 }
 div.contenido-header {
   padding-top: 40px;
@@ -233,7 +233,8 @@ h1.nombre-sitio {
 
 }
 
-/** Barra **/
+/** Barra  vieja **/
+/*
 div.barra {
   background-color:#f3e6d2;
   padding: 20px 0;
@@ -261,9 +262,10 @@ div.logo img {
   width: 300px;
 }
 
+*/
 
-
-/** Nav Principal **/
+/** Nav Principal  vieja**/
+/*
 nav.navegacion-principal{
   display: none;
   
@@ -301,6 +303,8 @@ nav.navegacion-principal a:hover{
     margin: 0 10px 0 0;
   }
 }
+*/
+
 
 
 /** Menú movil **/
@@ -329,16 +333,14 @@ div.menu-movil span {
   display: block;
 }
 */
-/*NAV */
+/*NAV *//*
 div.menu-nav{
   height: 50px;
   width: 100%;
   display:flex;
   flex-direction:row;
   }
-  #btn-menu{
-    display: none;
-  }
+
   div.menu-nav label{
     display: none;
     width: 40px;
@@ -379,7 +381,7 @@ div.menu-nav{
     line-height: 1!important;
 
 
-  }
+  }*/
 
   /*** CLASES.PHP *****/
 

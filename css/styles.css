@@ -103,12 +103,11 @@ input.btn_file{
     list-style: none;
     width:100%;
     display: table;
-    background-color:#F9F3DF;
+    background-color:#f3e6d2;
     font-family: 'Xanh Mono', monospace;
     font-size: 20px;
     text-transform: uppercase;
-    border-top: 4px solid black;
-    border-bottom: 4px solid black;
+
 }
 
 .menu ul li {
@@ -117,7 +116,7 @@ input.btn_file{
 .menu ul li a {
     text-decoration: none;
     display:block;
-    color:#000000;
+    color: #3A3845 ;
     padding: 20px 0;
     text-align: center;
     
@@ -343,10 +342,7 @@ form input{
     flex-direction: column;
 }
 
-.barra.abajo {
 
-
-}
 
 nav.navegacion-principal.abajo a{
     color: rgb(104, 100, 100) ;
@@ -394,9 +390,14 @@ nav.navegacion-principal.abajo a{
 
 .contenedor_inicio {
     width : 100%;
+    margin-top: 90px;
     
 }
-
+@media (max-width:768px){ 
+    .contenedor_inicio {
+    margin-top:0;
+    }
+}
 .contenedor_inicio_2{
     
     margin-top:5rem;
@@ -477,7 +478,7 @@ a {
 }
 .contee .info_inicio{
     padding: 2rem;
-    width:40%;
+    width:30%;
 }
 .contee {
     display:flex;
@@ -734,8 +735,8 @@ background-color: #ffffff;
     }
     .contee .info_inicio{
         padding: 2rem;
-        width:60%;
-        font-size: 2rem;
+        width:95%;
+        font-size: 3rem!important;
     }
     .con {
         display:flex;
