@@ -11,6 +11,7 @@ include_once('db/conexionDB.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $idPublicacion = $_GET['idPublicacion'];
+    $publicacion = traer_publicacion($idPublicacion, $conexion);
     $query = "SELECT * FROM `archivos` WHERE `idArchivo`='$id'";
     $result = mysqli_query($conexion, $query);
     if (!empty($result)) {
@@ -25,14 +26,26 @@ if (isset($_GET['id'])) {
 
             include_once('includes/navAdmin.php');
 
-        echo   " <form action='#' method='post'>";
+        ?>
+        <div class="eliminarArchivo">
+        <form action='#' method='post'> <?php
             $extension = devuelve_extension_de_archivo($fila['tipo']);
             if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
                 echo  "<td><div class='col-md-12'><img style='width:360;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
             } else {
                 echo "<td><div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width='360' height='270'></video> </div>";
             }
-           echo "<input name='eliminar' type='submit' value='Eliminar' class='btn btn-outline-danger' /> " ;
+           ?>
+            <input style="width: 170px;" name='eliminar' type='submit' value='Eliminar' class='btn btn-outline-danger' />
+           
+            <a style="width: 100px;" class='btn btn-outline-success'  href='modificarArchivos.php?id=<?php echo $idPublicacion ?>'>Volver</a>
+         
+           
+          
+           </div>
+           
+           
+           <?php
           
         }
     }else {

@@ -1,7 +1,9 @@
 <?php
 include_once('includes/funciones.php');
+include_once('includes/head.php');
 include_once('includes/navAdmin.php');
 include_once('db/conexionDB.php');
+$error = false;
 //con el id que llega en la variables $_GET buscamos la publicacion
 if (isset($_GET['id'])) {
   $idPublicacion = $_GET['id'];
@@ -16,21 +18,21 @@ if (isset($_POST['modificar']) && !empty($_POST)) {
         verificarPostArchivo($_FILES['archivo1'], $extensions_arr, $idPublicacion, $conexion);
     }
 
-    if(isset($_POST['descripcion'])){
-      $descripcion = $_POST['descripcion'];
-      if (strlen($descripcion) < 1) {
-        $error = true;
-         $message = 'Debe ingresar una descripcion.';
-      } elseif (strlen($descripcion) <= 3) {
-        $error = true;
-        $message = 'La descripcion debe tener mas de 3 caracteres.';
-      } else {
-        $descripcion = $_POST['descripcion'];
-        $query = "UPDATE  `publicaciones` SET `descripcion`= '$descripcion'  WHERE `idPublicacion` = '$idPublicacion'";
-        $result = mysqli_query($conexion, $query);
-      }
-        
-    }
+if(isset($_POST['descripcion'])){
+  $descripcion = $_POST['descripcion'];
+  if (strlen($descripcion) < 1) {
+    $error = true;
+     $message = 'Debe ingresar una descripcion.';
+  } elseif (strlen($descripcion) <= 3) {
+    $error = true;
+    $message = 'La descripcion debe tener mas de 3 caracteres.';
+  } else {
+    $descripcion = $_POST['descripcion'];
+    $query = "UPDATE  `publicaciones` SET `descripcion`= '$descripcion'  WHERE `idPublicacion` = '$idPublicacion'";
+    $result = mysqli_query($conexion, $query);
+  }
+    
+}
 
 
 }
@@ -46,6 +48,7 @@ if (isset($_POST['modificar']) && !empty($_POST)) {
 <div class="abm-evento container" >
   <form action="#"  method="post" enctype="multipart/form-data" >
 
+
 <?php
 $consulta =  "SELECT * FROM publicaciones WHERE `idPublicacion`='$idPublicacion'";
 $resultado = mysqli_query($conexion, $consulta);
@@ -53,20 +56,22 @@ while ($fila = mysqli_fetch_array($resultado)) {
     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion'";
     $resultado2 = mysqli_query($conexion, $consulta2); ?>
 
-
-  <th scope="row"><?php echo $fila['fecha'] ?></th>
+  <div scope="row"><?php echo $fila['fecha'] ?></div>
+  
+  <div class="ver-img"><div><?php echo "Fecha del evento: ". $fila['fechaEvento'] ?></div>
   <?php
   if($fila['tipo'] == 'evento'){
-  echo " <a  class='btn btn-outline-success activa-link' style='width:170px;' href='modificarFecha.php?id=" . $fila['idPublicacion'] ." '>Ver</a>";
+  echo "<div> <a class='btn btn-outline-success activa-link' href='modificarFecha.php?id=" . $fila['idPublicacion'] ." '>Ver</a>  </div></div>";
 
 }
   ?>
 
-  <div class="ver-img"><textarea name='descripcion' id="descripcion"style="height:150px; width:250px"class="form-control"><?php echo $fila['descripcion'] ?></textarea>
+
+  <div class="ver-img"><textarea name='descripcion' id="descripcion"style="height:150px; width:250px;"class="form-control"><?php echo $fila['descripcion'] ?></textarea>
   
-    <input name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" />
-    </div>
-<?php echo "  <td> <a class='pencil'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> ";
+    <input class="btn btn-outline-success activa-link" style="width:170px;" name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" /></div>
+
+<?php echo " <div class=' container'> <div> <a class='' style='margin-top:2rem;'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> </div>";
 
 ?>
 
@@ -76,9 +81,9 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
     $extension->getExtension();
     $extension = strtolower($extension);
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-    echo  "<div class='col-md-12'><img style='width:150;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
+    echo  "<div class='col-md-12'><img style='width:150; margin-top:1rem;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>  </div>";
     } else {
-    echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='150' height='60'></video> </div>";
+    echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='150' height='60'></video> </div>  </div>";
     } ?> 
 
 

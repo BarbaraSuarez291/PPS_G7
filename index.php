@@ -33,6 +33,19 @@ include_once('includes/funciones.php'); ?>
       <!--.hero-->
     </header>
 
+
+<div class="contenedor_gif">
+<div class="galeria__foto gif_inicio">
+      <img src="img/ballet2.gif" class="galeria__img">
+      <div class="capa_inicio"><h5>
+      Directores: Pim y Cris Cabral
+      </h5><h5>"Un Pueblo sin Tradición es un Cuerpo sin Alma"</h5></div>
+    </div>
+
+</div>
+
+
+
     <div class="container" style="margin-top:10rem;">
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div id="cars_inicio" class="col  " data-aos="fade-up" data-aos-duration="500">

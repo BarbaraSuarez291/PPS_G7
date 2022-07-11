@@ -14,19 +14,17 @@ include_once('includes/funciones.php'); ?>
 
     <?php include_once('includes/nav.php');
     //verifica las fechas de los eventos si el evento ya paso lo elimina
-    verificarFechaEvento($conexion);
+    //verificarFechaEvento($conexion);
 
     ?>
     <div class="titulo_eventos text-center">
-        <h1>Nuestro proximos eventos</h1>
+        <h1>Nuestros proximos eventos</h1>
     </div>
     <?php
     //lista de todas la publicacines
     $consulta =  "SELECT * FROM publicaciones WHERE `tipo`='evento' ORDER BY fechaEvento ASC";
     $resultado = mysqli_query($conexion, $consulta);
-    if ($fila = mysqli_fetch_array($resultado)) {
-
-
+    if (!empty($resultado)) {
         while ($fila = mysqli_fetch_array($resultado)) {
             $idPublicacion = $fila['idPublicacion'];
             $fechaEvento = $fila['fechaEvento'];
@@ -53,7 +51,8 @@ include_once('includes/funciones.php'); ?>
                         } ?>
                         <div class="card-body">
                             <div class="text-right m-2">
-                                <h2 class="titulo_evento_card"><?php echo "Proximo evento el " . $fila['fechaEvento'] ?></h2>
+                                <h2>Proximo evento el dia:</h2>
+                                <h2 class="titulo_evento_card"><?php echo  $fila['fechaEvento'] ?></h2>
                             </div>
                             <h4 class="descrip text-center"><?php
                                                             if ($fila['descripcion'] != null) {
@@ -64,11 +63,12 @@ include_once('includes/funciones.php'); ?>
                         if ($idEntrada) {
                         ?>
                         <form action="entrada.php" method="get">
-                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Click aqui para comprar entradas  </a></div>
+                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Realizar pedido de entradas haciendo click aqui </a></div>
+                        <br>
                         </form>
                         <?php } ?>
-                        <div class="text-center"> <a href="">
-                                <h3> Para mas info contactanos a traves de nuestras redes.. </h3>
+                        <div class="text-center"> <a href="index.php#redes_sociales_inicio">
+                                <p> Para mas info contactanos a traves de nuestras redes.. </p>
                             </a> </div>
                         <div class="card-footer text-muted">
                             <font style="vertical-align: inherit;">

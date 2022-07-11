@@ -1,3 +1,60 @@
+<?php 
+
+
+include('db/conexionDB.php');
+include('includes/funciones.php');
+
+$error = false;
+if (!empty($_POST)) {
+    if (!empty($_POST['descripcion'])) {
+    if (is_uploaded_file($_FILES['archivo1']['tmp_name'])){ 
+    if (!empty($_POST['fechaEvento'])) {
+        
+    try {
+    $tipoPublicacion = "evento";
+    $fecha = date('Y-m-d');
+    $fechaEvento = $_POST['fechaEvento'];
+    //$fechaS = $fecha['mday'] . "/" . $fecha['mon'] . "/" . $fecha['year'];
+    $descripcion = $_POST['descripcion'];
+    $admin = 1; //temporal, deberia traerse desde la session el id de admin que ingreso
+    $insertPublicacion = "INSERT INTO `publicaciones` (`idPublicacion`, `idAdmin`, `descripcion`,`fecha`, `tipo`, `fechaEvento`) VALUES (0, '$admin', '$descripcion', '$fecha', '$tipoPublicacion', '$fechaEvento')";
+
+} catch (Exception $e) {
+    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+}
+
+    if (mysqli_query($conexion, $insertPublicacion)) {
+        $rs = mysqli_query($conexion, "SELECT MAX(idPublicacion) AS idPublicacion FROM publicaciones");
+        if ($row = mysqli_fetch_row($rs)) {
+            $idPublicacion = trim($row[0]);
+        }
+    
+     //extensiones validados
+     $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
+     verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
+     header('Location:listadoEventos.php');
+        }
+
+
+    }else {
+        $error = true;
+        $message = "Debe ingresar la fecha del evento";
+    }
+
+    }else {     
+        $error = true;
+        $message = "Debe seleccionar 1 archivo";
+       
+    }
+
+    }else {
+        $error = true;
+    $message = "Debe ingresar la descripcion";
+    }  
+} 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,13 +74,21 @@
 <body>
 
 <div>
+<div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
+    <?php if ($error == true) : ?>
+      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
+        <strong><?php echo $message ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <?php endif; ?>
+  </div>
         <div class="container-fluid column  mt-4 d-flex justify-content-center">
             <div class=" justife-content-center col-md-10">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header text-center"><h3>Nuevo evento</h3></div>
                         <div class="card-body">
-                            <form action="AltaEventoDB.php" method="post" enctype="multipart/form-data">
+                            <form action="#" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group row">
                                     <label for="i1" class="col-md-3 col-form-label text-md-right"></label>
@@ -31,11 +96,13 @@
                                         <input name="archivo1" type="file" class="form-control btn-file" id="btn_file" onchange="return validarExt()" /><br />
                                     </div>
 
-                                <div class="form-group row">
-                                    <label for="descripcion" class="col-md-3 col-form-label text-md-right"></label>
-                                    <div class="col-md-7 center">
-                                        <textarea name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"></textarea><br />
-                                    </div>
+                                    <div class="form-group row">
+<label for="descripcion" class=" err-input col-md-3 col-form-label text-md-right"></label>
+<div class="col-md-7 center">
+<textarea name="descripcion" id="descripcion" placeholder="Descripcion" class="form-control"></textarea>
+<p id="err_descrip" class="err-alert"></p>
+ </div>
+</div>
 
                                 </div>
                                 <div class="form-group row">
@@ -72,9 +139,10 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src='js/altaPublicacion.js'>
+   <!-- <script src='js/altaPublicacion.js'>
 
-    </script>
+    </script>-->
+    <script src="js/upload.js"></script>
 </body>
 
 </html>

@@ -2,8 +2,7 @@
 include_once('db/conexionDB.php');
 include_once('includes/funciones.php');
 include_once('includes/head.php');
-$info_pedido = "";
-var_dump($_SESSION);
+include_once('includes/nav.php');
 if ($_GET['id']) {
   $idPublicacion = $_GET['id'];
   $publicacion = traer_publicacion($idPublicacion, $conexion);
@@ -48,8 +47,8 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 <body>
 
   <div class="container entrada_evento" style="margin-top:10rem;">
-    <h1>Consegui tus entradas</h1>
-    <h4>Fecha del evento: <?php echo $publicacion['fechaEvento']; ?></h4>
+    <h1>Entradas</h1>
+    <p>Fecha del evento: <?php echo $publicacion['fechaEvento']; ?></p>
     <p><?php echo $publicacion['descripcion'] ?></p>
     <?php
     $extension = devuelve_extension_de_archivo($archivos[0]['tipo']);
@@ -118,7 +117,7 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 
 
   </div>
-
+</div>
 
   <?php include_once('includes/footer.php'); ?>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

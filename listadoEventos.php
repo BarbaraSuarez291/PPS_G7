@@ -17,6 +17,7 @@ include_once('db/conexionDB.php');
     <tr>
       <th scope="col">Fecha</th>
       <th scope="col">Descripcion</th>
+      <th scope="col">Fecha evento</th>
       <th scope="col"></th>
       <th scope="col">Opciones</th>
     </tr>
@@ -31,29 +32,35 @@ include_once('db/conexionDB.php');
   ?>
   <tbody>
     <tr>
-      <th scope="row"><?php echo $fila['fecha'] ?></th>
+      <td scope="row"><?php echo $fila['fecha'] ?></td>
       <td><div class=""><p><?php echo $fila['descripcion'] ?></p></div></td>
+      <td><div class=""><p><?php echo $fila['fechaEvento'] ?></p></div></td>
       <td><?php
 while ($fila2 = mysqli_fetch_array($resultado2)) {
     //verificamos la extension del archivo
     $extension=devuelve_extension_de_archivo($fila2['tipo']);
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-      echo  "<div class='col-md-12'><img style='width:160;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
+      echo  "<div class='col-md-12'><img style='width:120;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
     } else {
 
-      echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='160' height='70'></video> </div>";
+      echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='120' height='30'></video> </div>";
     }
   }
      ?> </td>
-
+     <td>
+<a class="trash"  class="btn btn-outline-danger" href="eliminarEvento.php?id=<?php echo $idPublicacion; ?>"><i class='fa-regular fa-trash-can'></i></a>
+<a class='pencil' class='btn btn-outline-success' href="eventoABM2.php?id=<?php echo $idPublicacion; ?>"><i class='fa-solid fa-pencil'></i></a> 
 <?php 
-echo "  <td> <a class='pencil' class='btn btn-outline-success' href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'><i class='fa-solid fa-pencil'></i></a> ";
- echo "   <a class='trash'  class='btn btn-outline-danger' href='eliminarEvento.php?id=" . $fila['idPublicacion'] . "'><i class='fa-regular fa-trash-can'></i></a> " ;
-echo "   <a  class='ticket' href='crearEntrada.php?id=" . $fila['idPublicacion'] . "'> <i class='fa-solid fa-ticket'></i> </a></td>" ;
 
-?>
-      </td>
-    </tr>
+if (existe_entrada($idPublicacion, $conexion)) {
+  $entradas = traer_entrada($idPublicacion, $conexion);
+?>  <a href="actualizar_entrada.php?id=<?php echo $entradas['id'] ?>" class="btn btn-info">Editar entradas</a>  <?php
+} else {?>
+<a  class='' href="crearEntrada.php?id=<?php echo $idPublicacion; ?>"> Crear entradas </a>
+<?php } ?>
+</td>    
+</td>
+</tr>
     <?php } ?>
   </tbody>
 </table>

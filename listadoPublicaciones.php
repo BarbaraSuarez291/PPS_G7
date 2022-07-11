@@ -35,7 +35,7 @@ include_once('db/conexionDB.php');
   ?>
   <tbody>
     <tr>
-      <th scope="row"><?php echo $fila['fecha'] ?></th>
+      <td scope="row"><?php echo $fila['fecha'] ?></td>
       <td><div class=""><p><?php echo $fila['descripcion'] ?></p></div></td>
       <td><?php
 while ($fila2 = mysqli_fetch_array($resultado2)) {
@@ -48,12 +48,10 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
     }
   } 
      ?> </td>
-
-
-<?php echo "  <td> <a class='pencil'  href='publicacionABM.php?id=" . $fila['idPublicacion'] . "'><i class='fa-solid fa-pencil'></i></a> ";
- echo "   <a  class='trash' href='eliminarPublicacion.php?id=" . $fila['idPublicacion'] . "'><i class='fa-regular fa-trash-can'></i></a> </td>" ;
-
-?>
+<td>
+<a class='pencil'  href='publicacionABM.php?id=<?php echo $fila['idPublicacion'] ?>'><i class='fa-solid fa-pencil'></i></a>
+<a  class='trash' href='eliminarPublicacion.php?id=<?php echo $fila['idPublicacion'] ?>'><i class='fa-regular fa-trash-can'></i></a>
+</td>
 
 </td>
       </td>

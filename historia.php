@@ -9,8 +9,12 @@ include_once('includes/head.php'); ?>
 <div class="contenedor_histo " style="margin-top:3rem; margin-bottom:4rem;">
 <div class="contenedor_histo_info">
 <div class="container" >
-    <h1 data-aos="fade-right"  data-aos-duration="500">Nosotros</h1>
-    <p data-aos="fade-left"  data-aos-duration="900">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <h1 data-aos="fade-right"  data-aos-duration="200">Nosotros</h1>
+    <p data-aos="fade-left"  data-aos-duration="500"> Directores: Pim y Cris Cabral
+"Un Pueblo sin Tradición es un Cuerpo sin Alma".</p>
+    <p data-aos="fade-left"  data-aos-duration="500"> Pertenecemos a las Parroquias de Garin y Escobar.</p>
+    <p data-aos="fade-left"  data-aos-duration="500"> Evangelizamos desde la cultura llevando un mensaje de esperanza a distintos escenarios nacionales.</p>
+
 </div>
 </div>
 <div class="contenedor_histo_red">
@@ -25,10 +29,7 @@ include_once('includes/head.php'); ?>
 <div  class="" data-aos="fade-left"  data-aos-duration="900">
 <iframe width="320" height="440" src="https://www.instagram.com/p/CdXDthZDBYl/embed" frameborder="0"></iframe>
 </div>
-<div class="galeria__foto">
-      <img src="img/ballet2.gif" class="galeria__img">
-     
-    </div>
+
     </div>
 </div>
 

@@ -18,7 +18,7 @@ $sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `ema
                                                                                                 '$nombre',
                                                                                                 '$telefono',
                                                                                                 '$email',
-                                                                                                '$fecha')";
+                                                                                                '$fecha');";
 
 //ejecutar sentencia sql
 

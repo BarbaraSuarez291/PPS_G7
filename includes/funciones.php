@@ -30,7 +30,7 @@ function subirArchivo($archivo, $conexion, $idPublicacion)
         $insertArchivo = "INSERT INTO `archivos` (`idArchivo`, `idPublicacion`, `nombre`,`tipo`, `contenido`) VALUES (0, '$idPublicacion', '$nombre_archivo', '$tipo_archivo', '$contenido')";
 
         if (mysqli_query($conexion, $insertArchivo)) {
-            echo 'Publicacion insertada correctamente.';
+            return true;
         } else {
             echo 'Error al insertar el archivo' . mysqli_error($conexion);
         }
@@ -52,6 +52,7 @@ function verificarPostArchivo($archivo, $extensions_arr, $idPublicacion, $conexi
             subirArchivo($archivo, $conexion, $idPublicacion);
         } else {
             subirArchivo($archivo, $conexion, $idPublicacion);
+            //return false;
         }
     }
 }
@@ -292,3 +293,27 @@ if($result){
 }
 }
 
+function listar_eventos($conexion){
+  $consulta =  "SELECT * FROM publicaciones WHERE `tipo`= 'evento' ORDER BY fechaEvento ASC";
+  $resultado = mysqli_query($conexion, $consulta);
+  $eventos = mysqli_fetch_array($resultado);
+  if(!empty($eventos)){
+    return $eventos;
+  }
+}
+
+
+
+
+//____________________________________________________________________
+// se le pasa el id del evento y verificamos si tiene entradas creadas para este evento
+function existe_entrada($idPublicacion, $conexion){
+$query = "SELECT * FROM entradas WHERE idPublicacion=$idPublicacion";
+$r = mysqli_query($conexion, $query);
+$entrada = mysqli_fetch_array($r);
+if ($entrada) {
+  return true;
+} else if (!$entrada) {
+  return false;
+}
+}
