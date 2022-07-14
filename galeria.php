@@ -34,9 +34,10 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 <body>
 <?php
+
+include_once('includes/funciones.php');
 include_once('includes/nav.php');
 include_once('includes/navNosotros.php');
-include_once('includes/funciones.php');
 ?>
     <div class="container-galeria">
 
@@ -67,7 +68,7 @@ include_once('includes/funciones.php');
                     <?php
                     for($i=0; $i<count($archivos); $i++){
                       //  echo  "<div class='box-img-video fotos mt-2'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
-                    echo  "<div class='box-img-video fotos mt-2'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . ($archivos[$i]) . "'> </div>";
+                    echo  "<div class='box-img-video fotos mt-2'><img class=' materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . ($archivos[$i]) . "'> </div>";
 
                     }
                     ?>
@@ -87,7 +88,7 @@ include_once('includes/funciones.php');
 
 
 
-
+    <?php include_once('includes/footer.php'); ?> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 

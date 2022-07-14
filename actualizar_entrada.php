@@ -43,7 +43,7 @@ if(isset($_POST['enviar']) && !empty($_POST['enviar'])){
  }   
 }
 
-
+include_once('includes/navAdmin.php');
 
 
 

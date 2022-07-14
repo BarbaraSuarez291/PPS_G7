@@ -42,21 +42,22 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
         <div class="galeria">
 
-            <main class="container" style="width:100%; margin-top:10rem;">
-            <div class=" text-center">
-            <?php if($tipoPublicacion == "evento") { ?>
-            <div class="text-right m-2">
-                                <h2 class="titulo_evento_card"><?php echo "Te esperamos el " . $fechaEvento ?></h2>
-            </div>
-            <?php } ?>
-            <div class="row">
-                    <div class="col s12 center-align">
-                    <?php if($descripcion != null){
-                    echo "<div class=''>". $descripcion ." </div> ";
-                } ?>
-            </div>
+            <main class="container" style="width:100%; margin-top:10rem; text-align:center;">
+                <div class=" text-center">
+                    <?php if($tipoPublicacion == "evento") { ?>
+                    <div class="text-right m-2">
+                        <h2 class="titulo_evento_card"><?php echo "Te esperamos el " . $fechaEvento ?></h2>
+                    </div>
+                    <?php } ?>
+                    <div class="row">
+                            <div class="col s12 center-align">
+                            <?php if($descripcion != null){
+                            echo "<div class=''>". $descripcion ." </div> ";
+                        } ?>
+                    </div>
                 </div>
-                <div class="row galeria ">
+
+                <div class="grid-galeria ">
                     <?php
                     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where idPublicacion='$id'";
                     $resultado2 = mysqli_query($conexion, $consulta2);
@@ -69,7 +70,7 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
                                 $extension->getExtension();
                                 $extension = strtolower($extension);
                                 if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-                                    echo  "<div class='box-img-video fotos'><img class='responsive-img materialboxed img-galeria imagen' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
+                                    echo  "<div class='box-img-fotos'><img class='responsive-img materialboxed ' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
                                 } else {
 
                                     echo "<div class='box-img-video videos'> <video  class='materialboxed'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width=' 260' height='170'></video> </div>";
@@ -85,9 +86,9 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
 
 
 
-        </div>
+        </div><!-- .galeria-->
 
-    </div>
+    </div> <!-- .container-galeria-->
 
 
  

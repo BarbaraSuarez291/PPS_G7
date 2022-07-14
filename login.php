@@ -6,7 +6,10 @@ include_once('includes/nav.php');
 include_once('includes/funciones.php');
 
 $error = false;
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if($_POST){
+
+
+if ((isset($_POST['email']) && isset($_POST['password'])) && (!empty($_POST['email']) && !empty($_POST['password']))) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
@@ -16,18 +19,22 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     header('Location:index.php');
   } else {
     $error = true;
+    $message= "Email y/o Contraseña incorrecto/s";
   }
+}else{
+  $error = true;
+  $message= "Todos los campos son obligatorios.";
 }
 
-
+}
 
 ?>
 <head><title>Ingreso</title> </head>
 <section>
   <div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
     <?php if ($error == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top: 120px;"role="alert">
-        <strong>Email y/o Contraseña incorrecto/s</strong>
+      <div class="alert alert-danger alert-dismissible fade show" style="margin-top: 120px;"role="alert">
+        <strong><?php echo $message ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php endif; ?>

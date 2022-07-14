@@ -74,9 +74,9 @@ if (!empty($_POST)) {
 <body>
 
 <div>
-<div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
+<div class="container" style="font-size:1.3rem;">
     <?php if ($error == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show" style="margin-top:150px;" role="alert">
         <strong><?php echo $message ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>

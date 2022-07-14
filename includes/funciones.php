@@ -317,3 +317,34 @@ if ($entrada) {
   return false;
 }
 }
+
+//__________________________________________________________________________________________
+// lista todos los pedidos. 
+function listar_pedidos($conexion){
+  $consulta =  "SELECT * FROM pedidos ORDER BY id DESC";
+  $resultado = mysqli_query($conexion, $consulta);
+  //$pedidos = mysqli_fetch_array($resultado);
+  if(!empty($resultado)){
+    return $resultado;
+  }
+}
+//___________________________________________________________________________________________
+// trae el usuario pasandole el id
+function trae_usuario($id, $conexion){
+  $consulta =  "SELECT * FROM usuarios WHERE `idusuarios`=$id";
+  $resultado = mysqli_query($conexion, $consulta);
+  $usuario = mysqli_fetch_array($resultado);
+  if(!empty($usuario)){
+    return $usuario;
+  }
+}
+//___________________________________________________________________________________________
+//traer pedido por id
+function trae_pedido_por_id($id,$conexion){
+  $consulta =  "SELECT * FROM `pedidos` WHERE id=$id";
+  $resultado = mysqli_query($conexion, $consulta);
+  $pedido = mysqli_fetch_array($resultado);
+  if(!empty($pedido)){
+    return $pedido;
+  }
+}

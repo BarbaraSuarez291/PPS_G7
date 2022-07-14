@@ -13,7 +13,11 @@ include_once('includes/funciones.php');
     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion' LIMIT 1";
     $resultado2 = mysqli_query($conexion, $consulta2);
 
+
+    include_once('includes/nav.php');
+include_once('includes/navNosotros.php');
   ?>
+  
     <div style="margin-top:100px;">
       <div class="col-md-5 container-fluid column  mt-4 d-flex justify-content-center" data-aos="fade-right"
      data-aos-offset="300"
@@ -49,7 +53,7 @@ include_once('includes/funciones.php');
 
 
   <?php } ?>
-
+  <?php include_once('includes/footer.php'); ?> 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();

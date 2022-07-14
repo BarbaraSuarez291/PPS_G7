@@ -25,7 +25,8 @@ echo  " Tipo: " . $tipo . "<br>";
 echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/ ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once('includes/head.php'); ?>
+<?php include_once('includes/head.php'); 
+include_once('includes/funciones.php');?>
 <head>
     <title>Galeria</title>
 </head>
@@ -87,7 +88,7 @@ echo  " Tipo: " .$fila['tipo'] . "<br>";*/
 
 
 
-
+<?php include_once('includes/footer.php'); ?> 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

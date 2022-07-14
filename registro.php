@@ -4,16 +4,31 @@ include_once('includes/head.php');
 include_once('includes/nav.php');
 include_once('includes/funciones.php');
 
-$existeEmail = false;
-if ($_POST != null) {
+$error = false;
+if ( $_POST) {
+  if (!empty($_POST['nombre'])&& !empty($_POST['apellido']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordConfirm']) ) {
+  
 
   $usuario = datosDeNuevoUsuario($_POST);
   $existeEmail = existeUsuario($usuario['email'], $conexion);
   if ($existeEmail == false) {
+  if ($_POST['password'] ==$_POST['passwordConfirm']){
     registrarUsuario($usuario, $conexion);
     crear_session_para($usuario);
     header('Location:index.php');
+  }else {
+    $error = true;
+    $message = "Las contraseñas no coinciden.";
   }
+   
+  }else {
+    $error = true;
+    $message = "El email ingresado ya existe en la base de datos.";
+  }
+}else {
+  $error = true;
+  $message = "Todos los campos son obligatorios.";
+}
 }
 
 
@@ -24,10 +39,10 @@ if ($_POST != null) {
 </head>
 
 <section>
-  <div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
-    <?php if ($existeEmail == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
-        <strong>El email ingresado ya existe en la base de datos.</strong>
+  <div class="container" style="font-size:1.3rem;">
+    <?php if ($error == true) : ?>
+      <div class="alert alert-danger alert-dismissible fade show" style="margin-top:150px;" role="alert">
+        <strong><?php echo $message; ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <?php endif; ?>

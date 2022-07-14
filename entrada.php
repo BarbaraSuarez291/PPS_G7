@@ -46,7 +46,7 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 
 <body>
 
-  <div class="container entrada_evento" style="margin-top:10rem;">
+  <div class="container entrada_evento" >
     <h1>Entradas</h1>
     <p>Fecha del evento: <?php echo $publicacion['fechaEvento']; ?></p>
     <p><?php echo $publicacion['descripcion'] ?></p>
@@ -54,7 +54,7 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
     $extension = devuelve_extension_de_archivo($archivos[0]['tipo']);
 
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-      echo  "<div class='col-md-12'><img  class='responsive-img card-img-top col-md-12' src='data:image/jpeg; base64, " . base64_encode($archivos[0]['contenido']) . "'> </div>";
+      echo  "<div class='col-md-12'><img  class=' card-img-top col-md-12' src='data:image/jpeg; base64, " . base64_encode($archivos[0]['contenido']) . "'> </div>";
     } else {
 
       echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($archivos[0]['contenido'])  . "'  controls width='360' height='270'></video> </div>";
@@ -75,8 +75,8 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 
 
         <form action="#" method="post">
-          <div class="card_entradas" style="max-width: 300px; margin: 20px;">
-            <h5 class="card-title text-center"><?php echo $entradas['nombre'] ?></h5>
+          <div class="card_entradas" style="max-width: 300px;">
+            <h2 class="card-title text-center"><?php echo $entradas['nombre'] ?></h2>
             <p><?php echo $entradas['descripcion'] ?></p>
             <p> Precio: $<?php echo $entradas['precio'] ?></p>
             <p>Entradas disponibles: <?php echo $entradas['cantidad'] ?></p>

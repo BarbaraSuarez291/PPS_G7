@@ -7,7 +7,7 @@ include('includes/funciones.php');
 
 $error = false;
 if (!empty($_POST)) {
-    if (!empty($_POST['descripcion'])) {
+   if (!empty($_POST['descripcion'])) {
     if ((is_uploaded_file($_FILES['archivo1']['tmp_name'])) || (is_uploaded_file($_FILES['archivo2']['tmp_name'])) || (is_uploaded_file($_FILES['archivo3']['tmp_name']))  || (is_uploaded_file($_FILES['archivo4']['tmp_name'])) ) {
 
         $tipoPublicacion = "galeria";
@@ -32,7 +32,7 @@ if (!empty($_POST)) {
             verificarPostArchivo($_FILES['archivo4'],$extensions_arr,$idPublicacion, $conexion);
             header('Location:listadoPublicaciones.php');
         }
-    }else {
+  }else {
 
                 
         $error = true;
@@ -63,9 +63,9 @@ if (!empty($_POST)) {
 <?php include_once('includes/navAdmin.php'); ?>
 
 <body>
-<div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
+<div class="container" style="font-size:1.3rem;">
     <?php if ($error == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show" style="margin-top:150px;" role="alert">
         <strong><?php echo $message ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>

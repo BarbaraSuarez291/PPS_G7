@@ -2,16 +2,20 @@
 <html lang="en">
 <?php
 include_once('db/conexionDB.php');
-include_once('includes/head.php'); ?>
+include_once('includes/head.php');
+include_once('includes/nav.php');
+include_once('includes/navNosotros.php'); ?>
 
 
 
 <div class="contenedor_histo " style="margin-top:3rem;">
 <div style="padding:3rem;">
-  <h3 >Envianos tu info para sumarte a nuestro equipo</h3>
+  <h3 >¡Súmate a nuestro equipo!</h3>
+  <h4> Envianos un mensaje a nuestro Whatsapp adjuntando tu curriculum.</h4>
+  <h6><a href="https://api.whatsapp.com/send?phone=0123456789&text= Hola, quisiera ser parte del equipo!">Click Aquí</a></h6>
+
   </div>
 </div>
-
 
 
 
@@ -54,7 +58,7 @@ include_once('includes/head.php'); ?>
 
 
 
-
+  <?php include_once('includes/footer.php'); ?> 
 
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

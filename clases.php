@@ -2,6 +2,33 @@
 <html class="no-js" lang="">
 <?php include_once('db/conexionDB.php');
 include_once('includes/head.php');
+
+//Recuperar datos
+if ($_POST) {
+$mensaje=$_POST['mensaje'];
+$nombre=$_POST['nombre'];
+$telefono=$_POST['telefono'];
+$email=$_POST['email'];
+$fecha=date('Y-m-d');
+//sentencia sql
+$sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `email`,`fecha`)VALUES(0,
+                                                                                                '$mensaje',
+                                                                                                '$nombre',
+                                                                                                '$telefono',
+                                                                                                '$email',
+                                                                                                '$fecha');";
+
+//ejecutar sentencia sql
+$ejecutar = mysqli_query($conexion, $sql);
+//verificamos
+if(!$ejecutar){
+    echo "Hubo algún error";
+} else{
+    echo "Datos guardados correctamente.";//p
+}
+}
+
+
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -156,7 +183,7 @@ include_once('includes/nav.php');
   <section>
     <h2>¡Compartinos tu opinión!</h2>
 
-    <form class="formulario" action="reseñas.php" method="POST">
+    <form class="formulario" action="#" method="POST">
          <fieldset>
               <legend>Déjame tu comentario rellenando todos los compos</legend>
 
