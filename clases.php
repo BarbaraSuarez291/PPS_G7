@@ -5,6 +5,7 @@ include_once('includes/head.php');
 
 //Recuperar datos
 if ($_POST) {
+
 $mensaje=$_POST['mensaje'];
 $nombre=$_POST['nombre'];
 $telefono=$_POST['telefono'];
@@ -15,7 +16,7 @@ $valida_estado = "SELECT estado FROM reseñas WHERE email='$email'";
 $validando = mysqli_query($conexion,$valida_estado);
 while($esta = mysqli_fetch_array($validando)){
 if($esta['estado'] == "bloqueado"){
-   echo "USTED SE ENCUENTRA BLOQUEADO";
+  echo "<script>alert('Su email se encuentra deshabilitado ');window.location.href='clases.php.php</script>";
 }
 //sentencia sql
 $sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `email`,`fecha`)VALUES(0,
@@ -27,11 +28,11 @@ $sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `ema
 
 //ejecutar sentencia sql
 $ejecutar = mysqli_query($conexion, $sql);
-//verificamos
-if(!$ejecutar){
-    echo "Hubo algún error";
+  //verificamos
+  if(!$ejecutar){
+    echo "<script>alert('Hubo algún error');</script>";
 } else{
-    echo "Datos guardados correctamente.";//p
+    echo "<script>alert('Datos guardados correctamente');window.location.href='clases.php</script>";
 }
 }
 };

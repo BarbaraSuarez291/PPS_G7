@@ -145,10 +145,17 @@ input.btn_file{
 
 .container-galeria{
     background-color:rgb(253, 252, 229, .5);
-    width:95%;
+    width:100%;
     max-width: 1200px;
     margin: 20px auto;
-    
+    display: flex;
+    justify-content: center;
+}
+.container-gallery {
+    background-color:rgb(253, 252, 229, .5);
+    width:100%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 .menu ul {
     list-style: none;
@@ -717,6 +724,8 @@ text-transform: uppercase;
 .descrip {
     font-weight: lighter;
     padding:1rem;
+    border-top: 1px solid #252626;
+    border-bottom: 1px solid  #252626;
 }
 .titulo_eventos {
     margin-top: 10rem;
@@ -857,8 +866,7 @@ border-radius: 8px;
 .nav-nosotros {
     max-width: 800px;
     font-weight: 200;
-   /* border-top: 1px solid #9AD0EC;
-    border-bottom: 1px solid #9AD0EC;*/
+   
     margin-top:5rem; 
     list-style: none;
 }
@@ -867,7 +875,11 @@ border-radius: 8px;
 
 
 }
-
+.descripcion_publicacion {
+    padding: 2rem;
+    border-top: 1px solid #252626;
+    border-bottom: 1px solid  #252626;
+}
 .logo-youtube {
     font-size: 2rem;
 }

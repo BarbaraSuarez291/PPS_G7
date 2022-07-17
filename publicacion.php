@@ -52,7 +52,7 @@ echo  "<img src='data:image/jpg; base64, " . base64_encode($contenido) . "'>";*/
                     <div class="row">
                             <div class="col s12 center-align">
                             <?php if($descripcion != null){
-                            echo "<div class=''>". $descripcion ." </div> ";
+                            echo "<div class='descripcion_publicacion'>". $descripcion ." </div> ";
                         } ?>
                     </div>
                 </div>

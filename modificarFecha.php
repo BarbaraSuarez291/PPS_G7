@@ -15,8 +15,9 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['modificar']) && !empty($_POST['fechaEvento'])) {
-    $fecha = date('Y-m-d');
-    if ($_POST['fechaEvento']< $fecha) {
+    $fecha_actual = strtotime(date("Y-m-d",time()));
+    $fecha_entrada = strtotime($_POST['fechaEvento']);
+    if (  $fecha_entrada <  $fecha_actual) {
         var_dump($_POST['fechaEvento']);
         var_dump($fecha); 
         $error = true;
@@ -26,7 +27,8 @@ if (isset($_POST['modificar']) && !empty($_POST['fechaEvento'])) {
     $fechaEvento = $_POST['fechaEvento'];
     $query = "UPDATE  `publicaciones` SET `fechaEvento`= '$fechaEvento'  WHERE `idPublicacion` = '$id'";
     $result = mysqli_query($conexion, $query);
-    header("refresh: 2;");
+    echo "<script>alert('Fecha actualizada! Fecha del evento: $fechaEvento');window.location.href='eventoABM2.php?id=$id'</script>";
+
 }
 }
 if (isset($_POST['modificar']) && empty($_POST['fechaEvento'])) {

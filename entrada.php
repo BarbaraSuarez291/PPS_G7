@@ -54,7 +54,7 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
     $extension = devuelve_extension_de_archivo($archivos[0]['tipo']);
 
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-      echo  "<div class='col-md-12'><img  class=' card-img-top col-md-12' src='data:image/jpeg; base64, " . base64_encode($archivos[0]['contenido']) . "'> </div>";
+      echo  "<div class='col-md-12'><img  class='img-evento card-img-top col-md-12' src='data:image/jpeg; base64, " . base64_encode($archivos[0]['contenido']) . "'> </div>";
     } else {
 
       echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($archivos[0]['contenido'])  . "'  controls width='360' height='270'></video> </div>";
