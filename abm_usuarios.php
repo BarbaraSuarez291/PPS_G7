@@ -10,21 +10,14 @@
 <body>
 <div>
   <div>
-    <h1>Lista de usuarios</h1>
-   <form action="alta_entrada.php" name="alta1" method="POST">
-     <label>Correo del usuario </label>
-     <input type="text" id="correo" name="correo"/>
-     <br>
-     <input type="submit" name="buscar" value="Buscar">   
-   </form>
+    <h1>Lista de comentarios</h1>
 </div>
      <div>
         <table class="table">
           <tr>
             <td> ID de la Reseña </td>
             <td> Nombre </td>
-            <td> Descripcion</td>
-            <td> Puntaje </td>
+            <td> Reseña</td>
             <td> Fecha </td>
             <td> Correo </td>
           </tr>
@@ -36,11 +29,11 @@
           <tr>
             <td> <?php echo $fila['idReseña'];?></td>
             <td> <?php echo $fila['nombre'];?></td>
-            <td> <?php echo $fila['descripcion'];?></td>
-            <td> <?php echo $fila['puntaje'];?></td>
+            <td> <?php echo $fila['mensaje'];?></td>
+            <td> <?php echo $fila['telefono'];?></td>
             <td> <?php echo $fila['fecha'];?></td>
             <td> <?php echo $fila['email'];?></td>
-            <td><a href="bloquea_usu.php?email=<?php echo $fila['email'] ?>">Bloquear usuario</a></td>              
+            <td><a href="bloquea_usu.php?email=<?php echo $fila['email'] ?>">Bloquear usuario</a></td>            
           </tr>
         <?php
             };  

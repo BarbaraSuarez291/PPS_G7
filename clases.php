@@ -10,6 +10,13 @@ $nombre=$_POST['nombre'];
 $telefono=$_POST['telefono'];
 $email=$_POST['email'];
 $fecha=date('Y-m-d');
+
+$valida_estado = "SELECT estado FROM reseñas WHERE email='$email'";
+$validando = mysqli_query($conexion,$valida_estado);
+while($esta = mysqli_fetch_array($validando)){
+if($esta['estado'] == "bloqueado"){
+   echo "USTED SE ENCUENTRA BLOQUEADO";
+}
 //sentencia sql
 $sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `email`,`fecha`)VALUES(0,
                                                                                                 '$mensaje',
@@ -27,8 +34,7 @@ if(!$ejecutar){
     echo "Datos guardados correctamente.";//p
 }
 }
-
-
+};
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
