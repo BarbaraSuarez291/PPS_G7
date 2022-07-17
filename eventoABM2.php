@@ -30,6 +30,7 @@ if(isset($_POST['descripcion'])){
     $descripcion = $_POST['descripcion'];
     $query = "UPDATE  `publicaciones` SET `descripcion`= '$descripcion'  WHERE `idPublicacion` = '$idPublicacion'";
     $result = mysqli_query($conexion, $query);
+    echo "<script>alert('Descripcion actualizada!');window.location.href='eventoABM2.php?id=$idPublicacion'</script>";
   }
     
 }
@@ -61,7 +62,7 @@ while ($fila = mysqli_fetch_array($resultado)) {
   <div class="ver-img"><div><?php echo "Fecha del evento: ". $fila['fechaEvento'] ?></div>
   <?php
   if($fila['tipo'] == 'evento'){
-  echo "<div> <a class='btn btn-outline-success activa-link' href='modificarFecha.php?id=" . $fila['idPublicacion'] ." '>Ver</a>  </div></div>";
+  echo "<div> <a class='btn btn-outline-success' href='modificarFecha.php?id=" . $fila['idPublicacion'] ." '>Ver</a>  </div></div>";
 
 }
   ?>
@@ -69,25 +70,12 @@ while ($fila = mysqli_fetch_array($resultado)) {
 
   <div class="ver-img"><textarea name='descripcion' id="descripcion"style="height:150px; width:250px;"class="form-control"><?php echo $fila['descripcion'] ?></textarea>
   
-    <input class="btn btn-outline-success activa-link" style="width:170px;" name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" /></div>
+    <input class="btn btn-outline-success " style="width:170px;" name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" /></div>
 
-<?php echo " <div class=' container'> <div> <a class='' style='margin-top:2rem;'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> </div>";
+<?php echo " <div class=' container'> <div> <a class='btn btn-info' style='margin:3rem;'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar imagen</i></a> </div>";
 
 ?>
 
-<?php
-while ($fila2 = mysqli_fetch_array($resultado2)) {
-    $extension = new SplFileInfo($fila2['tipo']);
-    $extension->getExtension();
-    $extension = strtolower($extension);
-    if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-    echo  "<div class='col-md-12'><img style='width:150; margin-top:1rem;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>  </div>";
-    } else {
-    echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='150' height='60'></video> </div>  </div>";
-    } ?> 
-
-
-<?php } ?>
 
 
 <?php } ?>

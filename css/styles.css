@@ -857,9 +857,24 @@ border-radius: 8px;
 .nav-nosotros {
     max-width: 800px;
     font-weight: 200;
+   /* border-top: 1px solid #9AD0EC;
+    border-bottom: 1px solid #9AD0EC;*/
+    margin-top:5rem; 
+    list-style: none;
+}
+.nav-nosotros li a:hover{
+    color:#353331!important;
+
+
 }
 
-
+.logo-youtube {
+    font-size: 2rem;
+}
+.logo-youtube_ {
+    font-size: 1.6rem;
+    color: #34495e;
+}
 
 @media (max-width: 1500px) {
     .carousel h5 {

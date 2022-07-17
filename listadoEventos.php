@@ -40,7 +40,7 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
     //verificamos la extension del archivo
     $extension=devuelve_extension_de_archivo($fila2['tipo']);
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-      echo  "<div class='col-md-12'><img style='width:120;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
+      echo  "<div class='col-md-12'><img style='width:120;' class=' col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
     } else {
 
       echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='120' height='30'></video> </div>";

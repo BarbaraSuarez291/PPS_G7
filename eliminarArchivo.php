@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
             if (isset($_POST['eliminar'])) {
                 eliminarArchivo($conexion, $id, $idPublicacion);
                 $url= 'modificarArchivos.php?id='.$idPublicacion;
-                header('location:modificarArchivos.php?id=' . $idPublicacion);
+                echo "<script>alert('Imagen eliminada con exito!');window.location.href='modificarArchivos.php?id=$idPublicacion'</script>";
             }
 
 
@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
         <form action='#' method='post'> <?php
             $extension = devuelve_extension_de_archivo($fila['tipo']);
             if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-                echo  "<td><div class='col-md-12'><img style='width:360;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
+                echo  "<td><div class='col-md-12'><img style='width:360;' class=' col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila['contenido']) . "'> </div>";
             } else {
                 echo "<td><div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila['contenido'])  . "'  controls width='360' height='270'></video> </div>";
             }

@@ -15,11 +15,19 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['modificar']) && !empty($_POST['fechaEvento'])) {
-    var_dump($_POST);
+    $fecha = date('Y-m-d');
+    if ($_POST['fechaEvento']< $fecha) {
+        var_dump($_POST['fechaEvento']);
+        var_dump($fecha); 
+        $error = true;
+        $message = "No se puede ingresar una fecha pasada.";
+        //header("refresh: 2;");  
+      } else {
     $fechaEvento = $_POST['fechaEvento'];
     $query = "UPDATE  `publicaciones` SET `fechaEvento`= '$fechaEvento'  WHERE `idPublicacion` = '$id'";
     $result = mysqli_query($conexion, $query);
     header("refresh: 2;");
+}
 }
 if (isset($_POST['modificar']) && empty($_POST['fechaEvento'])) {
     $error = true;
@@ -37,10 +45,11 @@ include_once('includes/navAdmin.php');
         </div>
   <?php endif; ?>
 </div>
+<div class="eliminarArchivo">
     <form action="#" method="post" enctype="multipart/form-data">
-        <div class="form-group row">
-            <div class="col-md-7 center">
-               <?php echo $fecha['fechaEvento']; ?>
+        <div class="form-group row ">
+            <div class="center">
+             <strong><p>Fecha del evento: <?php echo $fecha['fechaEvento']; ?></p> </strong>
             </div>
 
         </div>
@@ -55,5 +64,5 @@ include_once('includes/navAdmin.php');
         <td><input name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" /></td>
         </div>
     </form>
-
+    </div>
 

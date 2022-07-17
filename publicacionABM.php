@@ -28,6 +28,8 @@ if (isset($_POST['modificar']) && !empty($_POST)) {
         $descripcion = $_POST['descripcion'];
         $query = "UPDATE  `publicaciones` SET `descripcion`= '$descripcion'  WHERE `idPublicacion` = '$idPublicacion'";
         $result = mysqli_query($conexion, $query);
+        echo "<script>alert('Descripcion actualizada!');window.location.href='publicacionABM.php?id=$idPublicacion'</script>";
+
       }
         
     }
@@ -66,28 +68,14 @@ while ($fila = mysqli_fetch_array($resultado)) {
   
     <input name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" />
     </div>
-<?php echo "  <td> <a class='pencil'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> ";
+<?php echo "  <td> <a  style='margin: 3rem; 'class='btn btn-info'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> ";
 
 ?>
 
-<?php
-while ($fila2 = mysqli_fetch_array($resultado2)) {
-    $extension = new SplFileInfo($fila2['tipo']);
-    $extension->getExtension();
-    $extension = strtolower($extension);
-    if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-    echo  "<div class='col-md-12'><img style='width:150;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
-    } else {
-    echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='150' height='60'></video> </div>";
-    } ?> 
-
 
 <?php } ?>
 
-
-<?php } ?>
-
-<div><a class='btn btn-outline-success'  href='listadoEventos.php'>Volver</a> </div>
+<div style="margin: 3rem;"><a class='btn btn-success'  href='listadoPublicaciones.php'>Volver</a> </div>
 </form>
 </div>
 <?php

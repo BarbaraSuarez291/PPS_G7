@@ -85,8 +85,36 @@ echo  " Tipo: " .$fila['tipo'] . "<br>";*/
     </main>
 </div>
 </div>
+<div class="contenedor_redes_inicio">
+    <section id="redes_sociales_inicio" class="redes_sociales_inicio">
 
 
+      <div class="container">
+        <div class="text-center nuestras_redes_inicio">
+          <h2>Nuestras redes</h2>
+        </div>
+        <div class="row row-cols-md-3 g-4 text-center iconos_redes_inicio">
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="800">
+            <a href="https://www.instagram.com/ballet.de.jesus.bs.as/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="1300">
+            <a href="https://www.facebook.com/Ballet-de-Jes%C3%BAs-Bs-As-1152876074851034" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </div>
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="1800">
+            <a href="https://www.youtube.com/channel/UCxzXcx4yOFKx0u_3eEmd5-w" target="_blank">
+              <i class="fa-brands fa-youtube"></i>
+
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+</div>
 
 <?php include_once('includes/footer.php'); ?> 
 

@@ -17,6 +17,7 @@ include_once('head.php');
   <li class="nav-item"> <a class="nav-link" href="listadoEventos.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eventos</font></font></a> </li>
   <li class="nav-item"> <a class="nav-link" href="ABM_Entradas.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entradas</font></font></a> </li>
   <li class="nav-item"> <a class="nav-link" href="listadoPedidos.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pedidos</font></font></a> </li>
+  <li class="nav-item"> <a class="nav-link" href="listadoVideos.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa-brands fa-youtube-square logo-youtube"></i></font></font></a> </li>
   <li class="nav-item"> <a class="nav-link" href="index.php"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Volver</font></font></a> </li>
 </ul>
 

@@ -576,14 +576,14 @@ h2 {
 }
 
 .campo textarea{
-  height: 20rem;
+  height: 10rem;
 }
 
 .input-text {
-  width: 100%;
+  width: 80%;
   border: note;
-  padding: 1.5rem;
-  border-radius: .5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 
@@ -608,6 +608,8 @@ h3 {
   display: grid;
   grid-template-columns: 100%;
   column-gap: 10rem;
+  margin-top:7rem; 
+  margin-bottom:5rem;
   
 }
 .ocultar {

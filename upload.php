@@ -1,6 +1,8 @@
 <?php
 
 use function PHPSTORM_META\type;
+ini_set('mysql.connect_timeout',300);
+ini_set('default_socket_timeout',300);
 
 include('db/conexionDB.php');
 include('includes/funciones.php');
@@ -8,6 +10,9 @@ include('includes/funciones.php');
 $error = false;
 if (!empty($_POST)) {
    if (!empty($_POST['descripcion'])) {
+    if ($_FILES['archivo1']['size'] <= 10242880) {
+        
+    
     if ((is_uploaded_file($_FILES['archivo1']['tmp_name'])) || (is_uploaded_file($_FILES['archivo2']['tmp_name'])) || (is_uploaded_file($_FILES['archivo3']['tmp_name']))  || (is_uploaded_file($_FILES['archivo4']['tmp_name'])) ) {
 
         $tipoPublicacion = "galeria";
@@ -24,13 +29,14 @@ if (!empty($_POST)) {
             }
     
             // extensiones validados
-            $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
+            $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg", "gif");
     
             verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
             verificarPostArchivo($_FILES['archivo2'],$extensions_arr,$idPublicacion, $conexion);
             verificarPostArchivo($_FILES['archivo3'],$extensions_arr,$idPublicacion, $conexion);
             verificarPostArchivo($_FILES['archivo4'],$extensions_arr,$idPublicacion, $conexion);
-            header('Location:listadoPublicaciones.php');
+            echo "<script>alert('Datos ingresados con exito!');window.location.href='listadoPublicaciones.php'</script>";
+      
         }
   }else {
 
@@ -39,6 +45,10 @@ if (!empty($_POST)) {
         $message = "Debe seleccionar al menos 1 archivo";
        
     }
+} else {
+    $error = true;
+    $message = "No se pueden subir archivos muy grandes.";
+}
 }else {
     $error = true;
     $message = "Debe ingresar la descripcion";
@@ -60,12 +70,14 @@ if (!empty($_POST)) {
 
 </head>
 <?php include_once('includes/head.php'); ?>
-<?php include_once('includes/navAdmin.php'); ?>
+<?php 
+//var_dump($_FILES['archivo1']['size'] );
+include_once('includes/navAdmin.php'); ?>
 
 <body>
 <div class="container" style="font-size:1.3rem;">
     <?php if ($error == true) : ?>
-      <div class="alert alert-danger alert-dismissible fade show" style="margin-top:150px;" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show"  role="alert">
         <strong><?php echo $message ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -83,7 +95,7 @@ if (!empty($_POST)) {
 <div class="form-group row">
 <label for="i1" class="col-md-3 col-form-label text-md-right"></label>
 <div class="col-md-7 center">
-<input name="archivo1" type="file" class="form-control btn-file" id="btn_file" onchange="return validarExt()" /><br />
+<input name="archivo1" type="file" class="form-control btn-file" id="btn_file" value="" onchange="return validarExt()" /><br />
 </div>
 </div>
 <div class="form-group row">
@@ -145,9 +157,7 @@ if (!empty($_POST)) {
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-   <!-- <script src='js/altaPublicacion.js'>
 
-    </script>-->
     <script src="js/upload.js"></script>
 </body>
 

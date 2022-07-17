@@ -1,6 +1,9 @@
 <?php
 
 //Verifica extension del archivo que se le pasa
+
+use LDAP\Result;
+
 function devuelve_extension_de_archivo($archivo){
     $extension = new SplFileInfo($archivo);
     $extension->getExtension();
@@ -15,7 +18,7 @@ function subirArchivo($archivo, $conexion, $idPublicacion)
     $tipo_archivo = $archivo['type'];
     $tamaño_archivo = $archivo['size'];
 
-    if ($tamaño_archivo <=  5242880) {
+    if ($tamaño_archivo <=  40242880) {
         //Ruta de la carpeta destino en servidor
         $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . '/intranet/uploads/';
         //Movemos la imagen del directorio temporal al directorio escogido
@@ -239,7 +242,7 @@ if (intval($cantTotal)== 0) {
   return false;
 }
 }
-
+// se le pasa por parametro el id del evento, id de usuario, la conexion, el telefono del usuario y el metodo de pago
 function datos_de_pedido($id, $cant, $user, $conexion , $telefono, $metodo_de_pago){
   $entrada = traer_entrada($id, $conexion);
   $cantidadActual = intval($entrada['cantidad']);
@@ -346,5 +349,28 @@ function trae_pedido_por_id($id,$conexion){
   $pedido = mysqli_fetch_array($resultado);
   if(!empty($pedido)){
     return $pedido;
+  }
+}
+
+
+//____________________________________________________________________________________________--
+// guarda codigo de yuotube
+function guardar_codigo($codigo , $conexion){
+  $query = "INSERT INTO `videos` (id, codigo) VALUES (0, '$codigo') ";
+  if(mysqli_query($conexion, $query)){
+    return true;
+  } else {
+    return false;
+  }
+}
+//__________________________________________________________________________________________________
+// listar videos de yuotube
+function listar_videos($conexion){
+  $query = "SELECT * FROM `videos` ORDER BY id  DESC ";
+  $result = mysqli_query($conexion, $query);
+  if($result){
+    return $result;
+  } else {
+    return false;
   }
 }

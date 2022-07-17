@@ -10,7 +10,8 @@ if (isset($_GET['id'])) {
     
     $query2 = "DELETE FROM `publicaciones` WHERE `idPublicacion` = '$id'";
     $result2 = mysqli_query($conexion, $query2);
-    header('Location: listadoPublicaciones.php');
+    echo "<script>alert('Publicacion eliminado con exito!');window.location.href='listadoPublicaciones.php'</script>";
+
     if (!$result && !$result2) {
         die("Query Failed.");
     }

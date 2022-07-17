@@ -2,7 +2,7 @@
 include_once('includes/funciones.php');
 include_once('includes/navAdmin.php');
 include_once('db/conexionDB.php');
-$notificacion = false;
+
 //con el id que llega en la variables $_GET buscamos la publicacion
 if (isset($_GET['id'])) {
   $idPublicacion = $_GET['id'];
@@ -15,9 +15,10 @@ if (isset($_POST['modificar']) && !empty($_POST)) {
     if (isset($_FILES['archivo1']) && !empty($_FILES['archivo1'])) {
         $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
          verificarPostArchivo($_FILES['archivo1'], $extensions_arr, $idPublicacion, $conexion);
+         echo "<script>alert('Imagen guardada con exito!');window.location.href='modificarArchivos.php?id=$idPublicacion'</script>";
+
         if (verificarPostArchivo($_FILES['archivo1'], $extensions_arr, $idPublicacion, $conexion)) {
-          $notificacion = true;
-          $message = 'Archivo agregado correctamente';
+         
       
         }
     }
@@ -30,14 +31,7 @@ if (isset($_POST['modificar']) && !empty($_POST)) {
 
 
 ?>
-<div class="container" style="margin-top:1.5rem;font-size:1.3rem;">
-    <?php if ($notificacion == true) : ?>
-      <div class="alert alert-danger alert-dismissible fade show" style="margin-top:150px;" role="alert">
-        <strong><?php echo $message; ?></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <?php endif; ?>
-  </div>
+
 <div class="container">
   <form action="#"  method="post" enctype="multipart/form-data" >
 <div class="modificarArchivos">
@@ -61,7 +55,7 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
     $extension->getExtension();
     $extension = strtolower($extension);
     if ($extension == 'image/jpg' || $extension == 'image/jpeg' || $extension == 'image/png') {
-    echo  "<div class='ver-img'><div class='col-md-12'><img style='width:260;' class='responsive-img col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
+    echo  "<div class='ver-img'><div class='col-md-12'><img style='width:260;' class=' col-md-12' src='data:image/jpeg; base64, " . base64_encode($fila2['contenido']) . "'> </div>";
     } else {
     echo "<div class='d-flex justify-content-center' col-md-12> <video  class='col-md-12'src='data:video/mp4; base64, " . base64_encode($fila2['contenido'])  . "'  controls width='260' height='170'></video> </div>";
     } ?> </td>
@@ -75,7 +69,7 @@ $tipoPublicacion = $fila['tipo'];
 $cantidad = contadorDeArchivos($conexion, $idPublicacion);
 
 if($tipoPublicacion == 'galeria'){
-  if ($cantidad["count(idPublicacion)"] < 4) {
+  if ($cantidad["count(idPublicacion)"] < 11) {
     ?> <div class='form-group row'> <label for='i1' class='col-md-3 col-form-label text-md-right'></label> <div class='col-md-7 center'>  <input name="archivo1" type="file" class="form-control btn-file" id="btn_file" onchange="return validarExt()" />  </div></div> 
     <div><input name="modificar" type="submit" value="Guardar archivo" class="btn btn-outline-primary" /></div>
     <?php
@@ -96,9 +90,9 @@ if($tipoPublicacion == 'galeria'){
   
   <?php
   if($tipoPublicacion == 'galeria'){
-  echo "<div><a class='activa-link'  href='publicacionABM.php?id=" . $idPublicacion . "'>Volver</a> </div>";
+  echo "<div><a class='btn btn-success'  href='publicacionABM.php?id=" . $idPublicacion . "'>Volver</a> </div>";
   } else {
-    echo "<div><a class='activa-link'  href='eventoABM2.php?id=" . $idPublicacion . "'>Volver</a> </div>";  }
+    echo "<div><a class='btn btn-success'  href='eventoABM2.php?id=" . $idPublicacion . "'>Volver</a> </div>";  }
   ?> 
 </form>
 </div>
