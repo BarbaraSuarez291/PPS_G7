@@ -51,7 +51,7 @@ include_once('includes/navAdmin.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ballet Folklorico - Entradas</title>
+  <title>Entradas</title>
 </head>
 <body>
 <?php if ($error == true) : ?>
@@ -62,7 +62,7 @@ include_once('includes/navAdmin.php');
     <?php endif; ?>
 <div class="card container ">
 <div class="card-header text-center">
-    <h1>Crear entradas</h1>
+    <h1>Modificar entrada</h1>
 </div>
 <div class="card-body">
 <form action="#" name="alta1" method="POST">

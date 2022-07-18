@@ -51,12 +51,12 @@ while ($fila2 = mysqli_fetch_array($resultado2)) {
      <a class="trash"  class="btn btn-outline-danger" href="eliminarEvento.php?id=<?php echo $idPublicacion; ?>"><i class='fa-regular fa-trash-can' onclick="return ConfirmDelete()"></i></a>
 <a class='pencil' class='btn btn-outline-success' href="eventoABM2.php?id=<?php echo $idPublicacion; ?>"><i class='fa-solid fa-pencil'></i></a> 
 <?php 
-
+//Si el evento tiene entradas creadas aparece la opcion de editar las entradas, sino el boton para crearlas
 if (existe_entrada($idPublicacion, $conexion)) {
   $entradas = traer_entrada($idPublicacion, $conexion);
-?>  <a href="actualizar_entrada.php?id=<?php echo $entradas['id'] ?>" class="btn btn-info">Editar entradas</a>  <?php
+?>  <a href="actualizar_entrada.php?id=<?php echo $entradas['id'] ?>" class="btn btn-warning">Editar entradas</a>  <?php
 } else {?>
-<a  class='' href="crearEntrada.php?id=<?php echo $idPublicacion; ?>"> Crear entradas </a>
+<a   href="crearEntrada.php?id=<?php echo $idPublicacion; ?>" class="btn btn-success"> Crear entradas </a>
 <?php } ?>
 </td>    
 </td>

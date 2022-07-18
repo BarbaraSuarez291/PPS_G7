@@ -10,7 +10,7 @@ include('includes/funciones.php');
 $error = false;
 if (!empty($_POST)) {
    if (!empty($_POST['descripcion'])) {
-    if ($_FILES['archivo1']['size'] <= 10242880) {
+    if ($_FILES['archivo1']['size'] <= 10242880 && $_FILES['archivo2']['size'] <= 10242880 && $_FILES['archivo3']['size'] <= 10242880 && $_FILES['archivo4']['size'] <= 10242880) {
         
     
     if ((is_uploaded_file($_FILES['archivo1']['tmp_name'])) || (is_uploaded_file($_FILES['archivo2']['tmp_name'])) || (is_uploaded_file($_FILES['archivo3']['tmp_name']))  || (is_uploaded_file($_FILES['archivo4']['tmp_name'])) ) {
@@ -29,8 +29,8 @@ if (!empty($_POST)) {
             }
     
             // extensiones validados
-            $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg", "gif");
-    
+            //$extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg", "gif");
+            $extensions_arr = array('png', 'jpg', 'jpeg');
             verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
             verificarPostArchivo($_FILES['archivo2'],$extensions_arr,$idPublicacion, $conexion);
             verificarPostArchivo($_FILES['archivo3'],$extensions_arr,$idPublicacion, $conexion);
@@ -84,9 +84,9 @@ include_once('includes/navAdmin.php'); ?>
     <?php endif; ?>
   </div>
 
-<div >
+<div class="container">
 <div class="container-fluid column  mt-4 d-flex justify-content-center">
-<div class=" justife-content-center col-md-10">
+<div class=" justife-content-center ">
 <div class="col-md-12">
 <div class="card">
 <div class="card-header text-center"><h3>Nueva publicacion</h3></div>
@@ -150,6 +150,7 @@ include_once('includes/navAdmin.php'); ?>
 
 
     </div>
+    <script src="js/upload.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -158,7 +159,7 @@ include_once('includes/navAdmin.php'); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="js/upload.js"></script>
+    
 </body>
 
 </html>

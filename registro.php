@@ -7,24 +7,29 @@ include_once('includes/funciones.php');
 $error = false;
 if ( $_POST) {
   if (!empty($_POST['nombre'])&& !empty($_POST['apellido']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordConfirm']) ) {
-  
+  if (is_valid_email($_POST['email'])) {
+    $usuario = datosDeNuevoUsuario($_POST);
+    $existeEmail = existeUsuario($usuario['email'], $conexion);
+    if ($existeEmail == false) {
+    if ($_POST['password'] ==$_POST['passwordConfirm']){
+      registrarUsuario($usuario, $conexion);
+      crear_session_para($usuario);
+      header('Location:index.php');
+    }else {
+      $error = true;
+      $message = "Las contraseñas no coinciden.";
+    }
+     
+    }else {
+      $error = true;
+      $message = "El email ingresado ya existe en la base de datos.";
+    }
+  } else {
+    $error = true;
+      $message = "El email no es valido.";
+  }
 
-  $usuario = datosDeNuevoUsuario($_POST);
-  $existeEmail = existeUsuario($usuario['email'], $conexion);
-  if ($existeEmail == false) {
-  if ($_POST['password'] ==$_POST['passwordConfirm']){
-    registrarUsuario($usuario, $conexion);
-    crear_session_para($usuario);
-    header('Location:index.php');
-  }else {
-    $error = true;
-    $message = "Las contraseñas no coinciden.";
-  }
-   
-  }else {
-    $error = true;
-    $message = "El email ingresado ya existe en la base de datos.";
-  }
+
 }else {
   $error = true;
   $message = "Todos los campos son obligatorios.";

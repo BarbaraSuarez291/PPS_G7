@@ -30,7 +30,8 @@ function validarExt2()
 {
     var archivoInput = document.getElementById('btn_file2');
     var archivoRuta = btn_file2.value;
-    var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+   // var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+   var extPermitidas = /(.jpg|.png|.jpeg)$/i;
     archivoRuta = archivoRuta.toLowerCase();
     if(!extPermitidas.exec(archivoRuta)){
         alert('Extension de archivo incorrecta');
@@ -44,7 +45,8 @@ function validarExt3()
 {
     var archivoInput = document.getElementById('btn_file3');
     var archivoRuta = btn_file3.value;
-    var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+    // var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+   var extPermitidas = /(.jpg|.png|.jpeg)$/i;
     archivoRuta = archivoRuta.toLowerCase();
     if(!extPermitidas.exec(archivoRuta)){
         alert('Extension de archivo incorrecta');
@@ -57,7 +59,8 @@ function validarExt4()
 {
     var archivoInput = document.getElementById('btn_file4');
     var archivoRuta = btn_file4.value;
-    var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+   // var extPermitidas = /(.jpg|.png|.mp4|.ogm|.ogv|.ogg|.gif|.jpeg)$/i;
+   var extPermitidas = /(.jpg|.png|.jpeg)$/i;
     archivoRuta = archivoRuta.toLowerCase();
     if(!extPermitidas.exec(archivoRuta)){
         alert('Extension de archivo incorrecta');

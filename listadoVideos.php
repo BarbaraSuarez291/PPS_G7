@@ -3,17 +3,7 @@ include('includes/funciones.php');
 include('db/conexionDB.php');
 $notificacion = false;
 //var_dump($_POST);
-if (isset($_POST['eliminar']) && !empty($_POST['id_a_eliminar'])) {
-  $id= $_POST['id_a_eliminar'];
-  $result = "DELETE FROM `videos` WHERE `id` = $id"; 
-  $eliminado = mysqli_query($conexion, $result); 
-if ($eliminado = true) {
-    $notificacion = true;
-    $message = "Video eliminado con exito!";
-    echo "<script>alert('Video eliminado con exito!');window.location.href='listadoVideos.php'</script>";
-   
-}
-}
+
 
 
 $resultado = listar_videos($conexion);
@@ -43,16 +33,16 @@ include_once('includes/navAdmin.php');
             <td> video</td>
             <td> eliminar</td>
           </tr>
-          <form action="listadoVideos.php" method="POST">
+          <form action="eliminarVideo.php" method="GET">
         <?php
 while( $videos = mysqli_fetch_array($resultado)){ 
         ?> 
-        <input type="hidden" name="id_a_eliminar" value="<?php echo $videos['id']?>">
+       
           <tr>
             <td> <?php echo $videos['id'];?></td>
             <td> <?php echo $videos['codigo'];?></td>
             <td ><a target="_blank" href=" <?php  echo "https://youtu.be/" . $videos['codigo'] ?>">Ver video en Youtube</a></td>
-            <td><button type="submit" class="btn btn-danger" name="eliminar" onclick="return ConfirmDelete()">Eliminar</button></td>
+           <td> <a class="trash"  class="btn btn-outline-danger" href="eliminarVideo.php?id=<?php echo $videos['id'];?>"><i class='fa-regular fa-trash-can' onclick="return ConfirmDelete()"></i></a></td>
           </tr>
           </form>
         <?php
@@ -64,9 +54,9 @@ while( $videos = mysqli_fetch_array($resultado)){
 
 
 <script type="text/javascript">
-      function ConfirmDelete(){
-        var respuesta = confirm('¿Esta seguro que desea eliminar?');
-        if (respuesta== true) {
+        function ConfirmDelete(){
+          var respuesta = confirm('Esta seguro que desea eliminar?');
+       if (respuesta== true) {
           return true;
         }else {
           return false;

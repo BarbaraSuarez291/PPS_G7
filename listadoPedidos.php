@@ -1,15 +1,8 @@
 <?php 
 include('includes/funciones.php');
 include('db/conexionDB.php');
-var_dump($_POST);
-if (isset($_POST['eliminar']) && !empty($_POST['id_a_eliminar'])) {
-  $id= $_POST['id_a_eliminar'];
-  $result = "DELETE FROM `pedidos` WHERE `id` = $id"; 
-  $eliminado = mysqli_query($conexion, $result); 
-if ($eliminado = true) {
-    echo "<script>alert('Pedido eliminado con exito!');window.location.href='listadoPedidos.php'</script>";
-}
-}
+//var_dump($_POST);
+
 $resultado = listar_pedidos($conexion);
 include_once('includes/head.php');
 include_once('includes/navAdmin.php');
@@ -29,22 +22,21 @@ include_once('includes/navAdmin.php');
             <td> Telefono</td>
             <td> </td>
           </tr>
-          <form action="listadoPedidos.php" method="POST">
+          <form action="eliminarPedido.php" method="GET">
         <?php
 while( $pedidos = mysqli_fetch_array($resultado)){ 
 
     $usuario = trae_usuario($pedidos['user'], $conexion);
         ?> 
-                <input type="hidden" name="id_a_eliminar" value="<?php echo $pedidos['id']?>">
-          <tr>
+                  <tr>
             <td> <?php echo $pedidos['id'];?></td>
             <?php // echo $pedidos['idPublicacion'];?>
             <td> <?php echo $usuario['nombre']. " " . $usuario['apellido'];?></td>
             <td> <?php echo $pedidos['cantidad'];?></td>
             <td> <?php echo "$".$pedidos['precio_total'];?></td>
             <td> <?php echo $pedidos['telefono'];?></td>
-            <td><button type="submit" class="btn btn-danger" name="eliminar" onclick="return ConfirmDelete()">Eliminar</button></td> 
-          </tr>
+            <td> <a class="trash"  class="btn btn-outline-danger" href="eliminarPedido.php?id=<?php echo $pedidos['id'];?>"><i class='fa-regular fa-trash-can' onclick="return ConfirmDelete()"></i></a></td>
+               </tr>
           </form>
         <?php
 }

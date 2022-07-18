@@ -63,7 +63,7 @@ include_once('includes/funciones.php'); ?>
                         if ($idEntrada) {
                         ?>
                         <form action="entrada.php" method="get">
-                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Realizar pedido de entradas haciendo click aqui </a></div>
+                        <div class="text-center"> <a class='ticket' href='entrada.php?id=<?php echo $idPublicacion ?>'> <i class='fa-solid fa-ticket'></i> Realizar pedido (click aqui) </a></div>
                         <br>
                         </form>
                         <?php } ?>

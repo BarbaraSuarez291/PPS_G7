@@ -375,3 +375,12 @@ function listar_videos($conexion){
     return false;
   }
 }
+
+//___________________________________________________________________________________________________
+ //Valida un email usando filter_var
+ //Devuelve true si es correcto o false en caso contrario
+
+function is_valid_email($email)
+{
+  return (false !== filter_var($email, FILTER_VALIDATE_EMAIL));
+}

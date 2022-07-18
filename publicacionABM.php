@@ -11,10 +11,10 @@ if (isset($_GET['id'])) {
 //si hay $_POST el siguente codifo actualiza la publicacion
 if (isset($_POST['modificar']) && !empty($_POST)) {
     
-    if (isset($_FILES['archivo1']) && !empty($_FILES['archivo1'])) {
+   /* if (isset($_FILES['archivo1']) && !empty($_FILES['archivo1'])) {
         $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
         verificarPostArchivo($_FILES['archivo1'], $extensions_arr, $idPublicacion, $conexion);
-    }
+    }*/
 
     if(isset($_POST['descripcion'])){
       $descripcion = $_POST['descripcion'];
@@ -54,8 +54,6 @@ $resultado = mysqli_query($conexion, $consulta);
 while ($fila = mysqli_fetch_array($resultado)) {
     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion'";
     $resultado2 = mysqli_query($conexion, $consulta2); ?>
-
-
   <th scope="row"><?php echo $fila['fecha'] ?></th>
   <?php
   if($fila['tipo'] == 'evento'){
@@ -64,11 +62,11 @@ while ($fila = mysqli_fetch_array($resultado)) {
 }
   ?>
 
-  <div class="ver-img"><textarea name='descripcion' id="descripcion"style="height:150px; width:250px"class="form-control"><?php echo $fila['descripcion'] ?></textarea>
+    <div class="ver-img"><textarea name='descripcion' id="descripcion"style="height:150px; width:250px"class="form-control"><?php echo $fila['descripcion'] ?></textarea>
   
     <input name="modificar" type="submit" value="Guardar cambios" class="btn btn-outline-primary" />
     </div>
-<?php echo "  <td> <a  style='margin: 3rem; 'class='btn btn-info'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> ";
+    <?php echo "  <td> <a  style='margin: 3rem; 'class='btn btn-info'  href='modificarArchivos.php?id=" . $idPublicacion . "'><i class='fa-solid fa-pencil'> Editar archivos</i></a> ";
 
 ?>
 
