@@ -3,6 +3,8 @@ include_once('db/conexionDB.php');
 include_once('includes/funciones.php');
 include_once('includes/head.php');
 include_once('includes/nav.php');
+include_once('funcion_delete.php');
+
 if ($_GET['id']) {
   $idPublicacion = $_GET['id'];
   $publicacion = traer_publicacion($idPublicacion, $conexion);
@@ -29,6 +31,28 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
       $user= buscar_usuario_por_email($_SESSION['email'], $conexion);
       $pedido_realizado = datos_de_pedido($publicacion['idPublicacion'], $cant, $user['idusuarios'], $conexion , $_POST['contacto'], $_POST['metodo_de_pago']);
       if($pedido_realizado == true){
+       //una vez cargado se le envia un mail al usuario con su pedido 
+       $asunto = "Detalle del pedido";
+       $mensaje = "Hola ".$user['nombre']." , usted realizo un pedido para obtener las entradas para el evento "
+                  .$publicacion['nombre']."a continuacion se encuentra el detalle del evento: <br>"
+                   ."DETALLES DE LA ENTRADA: <br>"
+                   ."Fecha: ".$publicacion['fechaEvento'] ."<br>"
+                   ."Descripcion: ".$publicacion['descripcion'] ."<br>"
+                   ."Cantidad de entradas: ".$entradas['cantidad'] ."<br>"
+
+                   ."Muchas gracias por su compra, Atte: Ballet de Jesus";
+        $email = $_SESSION['email'];
+        envia_mail($mail,$email,$mensaje,$asunto);
+        $asunto2 = "Aviso de pedido nuevo";
+        $mensaje2 = "Pedido Nuevo <br>"
+        ."Nombre :" .$user['nombre'] ."<br>"
+        ."Evento: ".$publicacion['nombre'] ."<br>"
+        ."Fecha: ".$publicacion['fechaEvento'] ."<br>"
+        ."Descripcion: ".$publicacion['descripcion'] ."<br>"
+        ."Cantidad de entradas: ".$entradas['cantidad'] ."<br>";
+
+        $email_admin = "barbarasuarez291@gmail.com";
+        envia_mail($mail,$email_admin,$mensaje2,$asunto2);
       //si el pedido fue guardado en la base de datos se busca en pedidos.php los datos del ultimo pedido realizado segun el id de usuario
       header('Location:pedido.php?id='.urlencode($user['idusuarios']));
       }
