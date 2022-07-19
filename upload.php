@@ -129,7 +129,7 @@ include_once('includes/navAdmin.php'); ?>
 <p id="err_descrip" class="err-alert"></p>
  </div>
 </div>
-
+<br><br><br>
 <div class="col-md-6 offset-md-3">
 <input  type="submit" value="Crear Publicacion" class="btn btn-outline-primary" />
 </div>

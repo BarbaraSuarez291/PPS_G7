@@ -4,18 +4,21 @@
 include_once('db/conexionDB.php');
 include_once('includes/head.php'); 
 include_once('includes/funciones.php');
+include_once('includes/nav.php');
+include_once('includes/navNosotros.php');
 ?>
   <?php //lista de todas la publicacines
   $consulta =  "SELECT * FROM publicaciones WHERE `tipo`='galeria' ORDER BY idPublicacion DESC";
   $resultado = mysqli_query($conexion, $consulta);
+
+  
   while ($fila = mysqli_fetch_array($resultado)) {
     $idPublicacion = $fila['idPublicacion'];
     $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion' LIMIT 1";
     $resultado2 = mysqli_query($conexion, $consulta2);
+$publi[] = $fila['idPublicacion'];
 
 
-    include_once('includes/nav.php');
-include_once('includes/navNosotros.php');
   ?>
   
     <div style="margin-top:100px;">
@@ -52,7 +55,47 @@ include_once('includes/navNosotros.php');
     </div>
 
 
-  <?php } ?>
+  <?php } 
+   if (empty($publi)) {
+    echo "<div class='d-flex justify-content-center text-center'> <div> <h4>No hay nada por aqui todavia... </h4> </div> </div>";
+            
+}
+ ?> </h4>
+   
+  
+  <div class="contenedor_redes_inicio">
+    <section id="redes_sociales_inicio" class="redes_sociales_inicio">
+
+
+      <div class="container">
+        <div class="text-center nuestras_redes_inicio">
+          <h2>Nuestras redes</h2>
+        </div>
+        <div class="row row-cols-md-3 g-4 text-center iconos_redes_inicio">
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="800">
+            <a href="https://www.instagram.com/ballet.de.jesus.bs.as/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="1300">
+            <a href="https://www.facebook.com/Ballet-de-Jes%C3%BAs-Bs-As-1152876074851034" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </div>
+          <div class="col" data-aos="zoom-in-down" data-aos-duration="1800">
+            <a href="https://www.youtube.com/channel/UCxzXcx4yOFKx0u_3eEmd5-w" target="_blank">
+              <i class="fa-brands fa-youtube"></i>
+
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+</div>
+
+
+
   <?php include_once('includes/footer.php'); ?> 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>

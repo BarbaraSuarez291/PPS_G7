@@ -391,9 +391,10 @@ form input{
 .err-alert{
     color: red;
     position: absolute;
-    margin-top: 45px;
+    margin-top: 0 auto;
     margin-left: 20px;
     font-size:15px;
+    
 }
 .err-input{
     display: flex;
@@ -907,7 +908,7 @@ align-items: flex-start;
 
 
 }
-.card_entradas h2, h5 {
+.card_entradas h2 {
     color: #384539;
     font-size: 1.3rem;
     text-transform: capitalize;

@@ -10,6 +10,10 @@ if (!empty($_POST)) {
         if ($_FILES['archivo1']['size'] <= 40242880) {
     if (is_uploaded_file($_FILES['archivo1']['tmp_name'])){ 
     if (!empty($_POST['fechaEvento'])) {
+        $fecha_actual = strtotime(date("Y-m-d",time()));
+        $fecha_entrada = strtotime($_POST['fechaEvento']);
+        if (  $fecha_entrada >  $fecha_actual) {
+            
         
     try {
     $tipoPublicacion = "evento";
@@ -34,9 +38,13 @@ if (!empty($_POST)) {
      //$extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg", "gif");
      $extensions_arr = array('png', 'jpg', 'jpeg');
      verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
-     header('Location:listadoEventos.php');
-        }
-
+     echo "<script>alert('Evento creado!');window.location.href='listadoEventos.php'</script>";
+     }
+    }else {
+        $error = true;
+        $message = "No se puede ingresar una fecha pasada.";
+        //header("refresh: 2;");  
+}
 
     }else {
         $error = true;

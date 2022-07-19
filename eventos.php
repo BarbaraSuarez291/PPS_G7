@@ -26,6 +26,7 @@ include_once('includes/funciones.php'); ?>
     $resultado = mysqli_query($conexion, $consulta);
     if (!empty($resultado)) {
         while ($fila = mysqli_fetch_array($resultado)) {
+            $event[]=$fila['idPublicacion'];
             $idPublicacion = $fila['idPublicacion'];
             $fechaEvento = $fila['fechaEvento'];
             $consulta2 = "SELECT idArchivo,  tipo, contenido FROM `archivos` where `idPublicacion`= '$idPublicacion' LIMIT 1";
@@ -85,6 +86,11 @@ include_once('includes/funciones.php'); ?>
     <?php }
     } else {
         echo "<div style='margin-top:15rem; 'class='d-flex justify-content-center text-center'> <div> <h4> No hay proximos eventos por el momento. </h4> </div> </div>";
+    }
+
+    if (empty($event)) {
+     echo "<div style='margin-top:1rem; margin-bottom:15rem; 'class='d-flex justify-content-center text-center'> <div> <h4> No hay proximos eventos por el momento. </h4> </div> </div>";
+         
     }
     ?>
 

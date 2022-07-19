@@ -6,6 +6,17 @@ const err_descrip = document.querySelector("#err_descrip");
 const descrip = document.querySelector("#descripcion");
 
 
+descrip.addEventListener('blur', () =>{
+    if(descrip.value.length < 3){
+        err_descrip.innerHTML="❌Debe tener mas de 3 caracteres"
+        btn_file.value = '';
+    }else{
+        err_descrip.innerHTML=""
+    }
+    
+})
+
+
 function validarExt()
 {
     var archivoInput = document.getElementById('btn_file');
@@ -17,12 +28,6 @@ function validarExt()
         btn_file.value = '';
         return false;
     }
-    
-        let archivo = form.querySelector('btn_file').files[0].size;
-let maximo = form.querySelector('input[name="MAX_FILE_SIZE"]').value;
-if (archivo > 41943040 ) {
-  alert('Máximo superado');
-}
     
 }
 
@@ -71,12 +76,3 @@ function validarExt4()
 
 
 
-descrip.addEventListener('blur', () =>{
-    if(descrip.value.length < 3){
-        err_descrip.innerHTML="❌Debe tener mas de 3 caracteres"
-        btn_file.value = '';
-    }else{
-        err_descrip.innerHTML=""
-    }
-    
-})

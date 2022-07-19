@@ -21,6 +21,7 @@ include_once('includes/navAdmin.php');
             <td> Monto a pagar</td>
             <td> Telefono</td>
             <td> </td>
+            <td></td>
           </tr>
           <form action="eliminarPedido.php" method="GET">
         <?php
@@ -35,6 +36,8 @@ while( $pedidos = mysqli_fetch_array($resultado)){
             <td> <?php echo $pedidos['cantidad'];?></td>
             <td> <?php echo "$".$pedidos['precio_total'];?></td>
             <td> <?php echo $pedidos['telefono'];?></td>
+            <td> <a  href="detalle_pedido.php?id=<?php echo $pedidos['id'];?>" class="btn btn-info">Ver detalle</a></td>
+            
             <td> <a class="trash"  class="btn btn-outline-danger" href="eliminarPedido.php?id=<?php echo $pedidos['id'];?>"><i class='fa-regular fa-trash-can' onclick="return ConfirmDelete()"></i></a></td>
                </tr>
           </form>

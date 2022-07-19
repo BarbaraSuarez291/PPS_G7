@@ -59,7 +59,7 @@ if ( $_POST) {
       <div class="nameSignUp">
         <div class="err-input">
           <input id="nameSignUp" class="input" type="text" placeholder="Nombre" name="nombre" value="<?= isset($_POST["nombre"]) ? $_POST["nombre"] : '' ?>">
-          <p id="errName" class="err-alert"></p>
+          <p id="errName" class="err-alert" style="margin-top: 55;"></p>
         </div>
         
 
@@ -67,7 +67,7 @@ if ( $_POST) {
         <!-- APELLIDO -->
         <div class="err-input">
           <input id="lastNameSignUp" class="input" type="text" placeholder="apellido" name="apellido" value="<?= isset($_POST["apellido"]) ? $_POST["apellido"] : '' ?>">
-          <p id="errLastName" class="err-alert"></p>
+          <p id="errLastName" class="err-alert" style="margin-top: 55;"></p>
         </div>
       </div>
 
@@ -75,7 +75,7 @@ if ( $_POST) {
       <!-- EMAIL -->
       <div class="err-input">
         <input id="emailSignUp" class="input" type="email" placeholder="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"] : '' ?>">
-        <p id="errEmail" class="err-alert"></p>
+        <p id="errEmail" class="err-alert" style="margin-top: 55;" ></p>
       </div>
       <div class="nameSignUp">
 
@@ -83,14 +83,14 @@ if ( $_POST) {
         <!-- CONTRASEÑA -->
         <div class="err-input">
           <input id="passwordSignUp" class="input" type="password" placeholder="password" name="password" value="<?= isset($_POST["password"]) ? $_POST["password"] : '' ?>">
-          <p id="errPassword" class="err-alert"></p>
+          <p id="errPassword" class="err-alert" style="margin-top: 55;"> </p>
         </div>
 
 
         <!-- REPETIR CONTRASEÑA -->
         <div class="err-input">
           <input id="passwordConfirmSignUp" class="input" type="password" placeholder=" confirme password" name="passwordConfirm" value="<?= isset($_POST["passwordConfirm"]) ? $_POST["passwordConfirm"] : '' ?>">
-          <p id="errPasswordConfirm" class="err-alert"></p>
+          <p id="errPasswordConfirm" class="err-alert" style="margin-top: 55;"></p>
         </div>
 
       </div>

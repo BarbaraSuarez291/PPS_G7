@@ -61,8 +61,16 @@ include_once('includes/navAdmin.php');
     //con str_split convertimos el string en un array asi podemos tomar solo el codigo que necesitamos
     $arr = str_split($url);
     $codigo = "";
+    $link = "";
     for ($i = 17; $i < count($arr); $i++) {
       $codigo = $codigo . $arr[$i];
+    }
+    for ($i = 0; $i < 17; $i++) {
+      $link = $link . $arr[$i];
+    }
+    if ($link != "https://youtu.be/") {
+      echo "<script>alert('Hubo un error con la url.');window.location.href='videos_abm.php'</script>";
+      
     }
   ?>
     <div class="contenedor_histo " style="margin-top:3rem; margin-bottom:4rem;">

@@ -36,8 +36,8 @@ if(isset($_POST['enviar']) && !empty($_POST['enviar'])){
   $respuesta = mysqli_query($conexion,$actulizar_entrada);
   
   if ($respuesta = true){
-  header("Location:ABM_Entradas.php");
-  
+    echo "<script>alert('Entrada actualizada!');window.location.href='ABM_entradas.php'</script>";
+   
   }
   mysqli_close($conexion);
  }   

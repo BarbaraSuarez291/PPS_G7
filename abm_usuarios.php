@@ -27,7 +27,7 @@ include_once('includes/navAdmin.php');?>
             <td></td>
           </tr>
         <?php
-           $sql = "SELECT * FROM reseñas";
+           $sql = "SELECT * FROM reseñas ORDER BY idReseña DESC LIMIT 30 ";
            $usu = mysqli_query($conexion, $sql);
            while($fila = mysqli_fetch_array($usu)){
         ?> 
@@ -36,7 +36,7 @@ include_once('includes/navAdmin.php');?>
             <td> <?php echo $fila['nombre'];?></td>
             <td> <?php echo $fila['mensaje'];?></td>
             <td> <?php echo $fila['telefono'];?></td>
-            <td> <?php echo ($fila['fecha']);?></td>
+            <td> <?php echo substr($fila ['fecha'], -19,10);?></td>
             <td> <?php echo $fila['email'];?></td>
             <?php if ($fila['estado'] == "bloqueado"){
             ?>  <td><p>Usuario bloqueado</p></td> <?php

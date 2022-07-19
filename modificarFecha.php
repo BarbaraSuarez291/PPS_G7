@@ -18,8 +18,6 @@ if (isset($_POST['modificar']) && !empty($_POST['fechaEvento'])) {
     $fecha_actual = strtotime(date("Y-m-d",time()));
     $fecha_entrada = strtotime($_POST['fechaEvento']);
     if (  $fecha_entrada <  $fecha_actual) {
-        var_dump($_POST['fechaEvento']);
-        var_dump($fecha); 
         $error = true;
         $message = "No se puede ingresar una fecha pasada.";
         //header("refresh: 2;");  
