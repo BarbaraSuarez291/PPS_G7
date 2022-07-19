@@ -15,7 +15,7 @@ include_once('includes/nav.php');
 ?>
 
 <body>
-<div class="container" style="margin-top:10rem;">
+<div class="container contenedor_pedido" >
 <div>
 <div class="card_entradas">
 <h1>Tu pedido fue realizado con exito!</h1>

@@ -39,7 +39,7 @@ include_once('includes/funciones.php');
 include_once('includes/nav.php');
 include_once('includes/navNosotros.php');
 ?>
-    <div class="container-galeria">
+    <div class="container-gallery">
 
         <div class="galeria">
             <main class="container">

@@ -7,6 +7,7 @@ include('includes/funciones.php');
 $error = false;
 if (!empty($_POST)) {
     if (!empty($_POST['descripcion'])) {
+        if ($_FILES['archivo1']['size'] <= 40242880) {
     if (is_uploaded_file($_FILES['archivo1']['tmp_name'])){ 
     if (!empty($_POST['fechaEvento'])) {
         
@@ -30,7 +31,8 @@ if (!empty($_POST)) {
         }
     
      //extensiones validados
-     $extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg");
+     //$extensions_arr = array("mp4", "avi", "3gp", "mov", "mpeg", "gif");
+     $extensions_arr = array('png', 'jpg', 'jpeg');
      verificarPostArchivo($_FILES['archivo1'],$extensions_arr,$idPublicacion, $conexion);
      header('Location:listadoEventos.php');
         }
@@ -46,7 +48,10 @@ if (!empty($_POST)) {
         $message = "Debe seleccionar 1 archivo";
        
     }
-
+}else {
+        $error = true;
+    $message = "Debe ingresar la descripcion";
+    }  
     }else {
         $error = true;
     $message = "Debe ingresar la descripcion";
@@ -83,7 +88,7 @@ if (!empty($_POST)) {
     <?php endif; ?>
   </div>
         <div class="container-fluid column  mt-4 d-flex justify-content-center">
-            <div class=" justife-content-center col-md-10">
+            <div class=" justife-content-center">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header text-center"><h3>Nuevo evento</h3></div>

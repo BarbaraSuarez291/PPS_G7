@@ -29,18 +29,20 @@ if(isset($_POST['enviar']) && !empty($_POST['enviar'])){
 
         $insertar1 = "INSERT INTO entradas (nombre, precio, descripcion, cantidad, idPublicacion) VALUES('$nombre', '$precio', '$descripcion', '$cantidad', '$idPublicacion')";
         $respuesta1 = mysqli_query($conexion,$insertar1);
-        echo "El nombre de la entrada se cambio correctamente";
+        //echo "El nombre de la entrada se cambio correctamente";
     if ($respuesta1 = true ){
-        header("Location:ABM_Entradas.php");
+        echo "<script>alert('Entradas agregadas con exito!');window.location.href='ABM_entradas.php'</script>";
+  
+        //header("Location:ABM_Entradas.php");
     }
  }   
 }
 
 include_once('includes/head.php');
 include_once('includes/navAdmin.php');
-?>
+?><div class="container" >
  <?php if ($error == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show"  role="alert">
         <strong><?php echo $message; ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -81,6 +83,7 @@ Id del evento:
     
     </div>
 </form>
+</div>
 </div>
 </div>
 <?php } ?>

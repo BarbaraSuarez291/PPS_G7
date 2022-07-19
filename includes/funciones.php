@@ -68,8 +68,9 @@ function verificarFechaEvento($conexion)
     $resultado = mysqli_query($conexion, $consulta);
 
     while ($fila = mysqli_fetch_array($resultado)) {
-
-        if ($fechaActual >= $fila['fechaEvento'] ) {
+      $fecha_actual = strtotime(date("Y-m-d",time()));
+      $fecha_entrada = strtotime($fila['fechaEvento']);
+        if ($fecha_actual >= $fecha_entrada ) {
             $idPublicacion = $fila['idPublicacion'];
             $query = "DELETE FROM `publicaciones` WHERE `idPublicacion` = '$idPublicacion'";
             $result = mysqli_query($conexion, $query);
@@ -373,4 +374,13 @@ function listar_videos($conexion){
   } else {
     return false;
   }
+}
+
+//___________________________________________________________________________________________________
+ //Valida un email usando filter_var
+ //Devuelve true si es correcto o false en caso contrario
+
+function is_valid_email($email)
+{
+  return (false !== filter_var($email, FILTER_VALIDATE_EMAIL));
 }

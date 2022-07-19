@@ -10,9 +10,10 @@ $notificacion = false;
 if (isset($_POST['codigo']) && $_POST['codigo']!= null) {
     if(guardar_codigo($_POST['codigo'], $conexion)){
       header('videos_abm.php');
-        $notificacion = true;
-        $message ="Link guardado con exito";
-        
+        //$notificacion = true;
+        //$message ="Link guardado con exito";
+        echo "<script>alert('Video cargado con exito');window.location.href='listadoVideos.php'</script>";
+      
 
 
     }

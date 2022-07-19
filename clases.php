@@ -1,38 +1,54 @@
 <!doctype html>
 <html class="no-js" lang="">
 <?php include_once('db/conexionDB.php');
+include_once('includes/funciones.php');
 include_once('includes/head.php');
 
 //Recuperar datos
 if ($_POST) {
-$mensaje=$_POST['mensaje'];
-$nombre=$_POST['nombre'];
-$telefono=$_POST['telefono'];
-$email=$_POST['email'];
-$fecha=date('Y-m-d');
+  if (!empty($_POST['email']) && !empty($_POST['mensaje']) && !empty($_POST['telefono']) &&!empty($_POST['nombre'])) {
+   if (is_valid_email($_POST['email'])) {
+  
+  
+  $email=$_POST['email'];
+  $query = "SELECT * FROM reseñas WHERE email='$email' AND estado='bloqueado'";
+  $bloqueado = mysqli_query($conexion,$query);
+  if($bloqueado = mysqli_fetch_array($bloqueado)){
+    echo "<script>alert('Su email se encuentra deshabilitado.');window.location.href='clases.php'</script>";
+ 
 
-$valida_estado = "SELECT estado FROM reseñas WHERE email='$email'";
-$validando = mysqli_query($conexion,$valida_estado);
-while($esta = mysqli_fetch_array($validando)){
-if($esta['estado'] == "bloqueado"){
-   echo "USTED SE ENCUENTRA BLOQUEADO";
-}
-//sentencia sql
-$sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `email`,`fecha`)VALUES(0,
-                                                                                                '$mensaje',
-                                                                                                '$nombre',
-                                                                                                '$telefono',
-                                                                                                '$email',
-                                                                                                '$fecha');";
+  
+  }else {
+    $mensaje=$_POST['mensaje'];
+  $nombre=$_POST['nombre'];
+  $telefono=$_POST['telefono'];
+ 
+  $fecha=date('Y-m-d');
+  
+  //sentencia sql
+  $sql="INSERT INTO `reseñas` (`idReseña`, `mensaje`, `nombre`, `telefono`, `email`,`fecha`)VALUES(0,
+                                                                                                  '$mensaje',
+                                                                                                  '$nombre',
+                                                                                                  '$telefono',
+                                                                                                  '$email',
+                                                                                                  '$fecha');";
+  
+  //ejecutar sentencia sql
+  $ejecutar = mysqli_query($conexion, $sql);
+    //verificamos
+    if(!$ejecutar){
+      echo "<script>alert('Hubo algún error');</script>";
+  } else{
+      echo "<script>alert('Datos guardados correctamente');window.location.href='clases.php'</script>";
+  }
+  }
+}else {
+  echo "<script>alert('El email no es valido');window.location.href='clases.php'</script>";
 
-//ejecutar sentencia sql
-$ejecutar = mysqli_query($conexion, $sql);
-//verificamos
-if(!$ejecutar){
-    echo "Hubo algún error";
-} else{
-    echo "Datos guardados correctamente.";//p
 }
+}else {
+  echo "<script>alert('Todos los campos son obligatorios');window.location.href='clases.php'</script>";
+
 }
 };
 ?>
@@ -166,17 +182,17 @@ include_once('includes/nav.php');
 
         <?php
       //  echo "<form action='#' ";
-        $consulta = "SELECT * FROM  reseñas ";
+        $consulta = "SELECT * FROM reseñas ORDER BY idReseña DESC LIMIT 30 ";
         $resultado = mysqli_query($conexion,$consulta);
         while ($fila = mysqli_fetch_array($resultado)) {
           $idReseña = $fila['idReseña'];
-          
+  
         ?>
         <tbody>
           <tr>
           <td> <div class="ubicacion"><p><?php echo $fila['nombre']?></p></div></td>
             <td> <div class="ubicacion"><p><?php echo $fila['mensaje']?></p></div></td>
-            <th scope="row" class="ubicacion"><?php echo $fila ['fecha'] ?> </th>
+            <th scope="row" style="width:10rem;"class="ubicacion"><?php echo substr($fila ['fecha'], -19,10); ?> </th>
             <td>
       <?php } ?>
     </table>
@@ -189,7 +205,7 @@ include_once('includes/nav.php');
   <section>
     <h2>¡Compartinos tu opinión!</h2>
 
-    <form class="formulario" action="#" method="POST">
+    <form class="formulario" action="clases.php" method="POST">
          <fieldset>
               <legend>Déjame tu comentario rellenando todos los compos</legend>
 
@@ -228,7 +244,10 @@ include_once('includes/nav.php');
 
 <?php include_once('includes/footer.php'); ?>
  <!-- . . . . . . . . . . . .-->
-
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
   <script src="js/vendor/modernizr-3.8.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
