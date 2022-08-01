@@ -57,7 +57,7 @@ include_once('includes/navAdmin.php');
 
   <?php
   if (isset($_POST['url'])) {
-    $url = $_POST['url'];
+    $url = trim($_POST['url']);
     //con str_split convertimos el string en un array asi podemos tomar solo el codigo que necesitamos
     $arr = str_split($url);
     $codigo = "";

@@ -86,12 +86,12 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 
     ?>
     <div class="entradas">
-      <div>
+
         <h2>Entradas:</h2>
-      </div>
+
       <div>
         <?php if ($error == true) : ?>
-          <div class="alert alert-warning alert-dismissible fade show" style="margin-top: 120px;" role="alert">
+          <div class="alert alert-danger alert-dismissible fade show"  role="alert">
             <strong><?php echo $message ?></strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
@@ -100,10 +100,11 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
 
         <form action="#" method="post">
           <div class="card_entradas" style="max-width: 300px;">
-            <h2 class="card-title text-center"><?php echo $entradas['nombre'] ?></h2>
-            <p><?php echo $entradas['descripcion'] ?></p>
-            <p> Precio: $<?php echo $entradas['precio'] ?></p>
-            <p>Entradas disponibles: <?php echo $entradas['cantidad'] ?></p>
+          <div> <h6 class="card-title text-center"><?php echo $entradas['nombre'] ?></h6></div>
+           <div> <p><?php echo $entradas['descripcion'] ?></p></div>
+           <div> <p> Precio: $<?php echo $entradas['precio'] ?></p></div>
+           <div> <p>Entradas disponibles: <?php echo $entradas['cantidad'] ?></p></div>
+            
             <form action="pedido.php" method="get">
 
               <div class="err-input"> <label for="cantidad">Seleccione la cantidad:</label> <select id="select_cantidad" lass="content-select" name="cantidad" required>
@@ -115,22 +116,22 @@ if (!empty($_POST['cantidad']) && !empty($_POST['metodo_de_pago']) && !empty($_P
                   <option value="5">5</option>
                   <option value="6">6</option>
                 </select>
-                <p id="errCant" class="err-alert"></p>
+                <p id="errCant" class="err-alert" style="margin-top: 4.4rem;"></p>
               </div>
               <div>
                 <div class="err-input">
-                  <label for="cantidad">Seleccione la cantidad:</label> <select id="metodo_de_pago" lass="content-select" name="metodo_de_pago" required>
+                  <label for="cantidad">Seleccione la cantidad:</label> <select style="margin-bottom: 1rem;" id="metodo_de_pago" lass="content-select" name="metodo_de_pago" required>
                     <option value="0" selected>Eliga metodo de pago</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="transferencia">Transferencia</option>
                   </select>
-                  <p id="err-metodo-de-pago" class="err-alert"></p>
+                  <p id="err-metodo-de-pago" class="err-alert" style="margin-top: 4.7rem;"></p>
                 </div>
 
                 <div class="err-input">
                   <label for="contacto">Antes de terminar dejanos un numero de contacto</label> 
                 <input name="contacto" type="text" id="contacto" class="form-control">
-                <p id="err-numero-usuario" class="err-alert"></p>
+                <p id="err-numero-usuario" class="err-alert" style="margin-top: 8rem;"></p>
                 </div>
                 <div class="text-center"> <a class='ticket' href='pedido.php?id=<?php echo $idPublicacion ?>'> <button type="input" class="btn btn-dark">Realizar pedido</button> </a></div>
             </form>

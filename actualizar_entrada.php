@@ -55,7 +55,7 @@ include_once('includes/navAdmin.php');
 </head>
 <body>
 <?php if ($error == true) : ?>
-      <div class="alert alert-warning alert-dismissible fade show" style="margin-top:150px;" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show container" style="" role="alert">
         <strong><?php echo $message; ?></strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>

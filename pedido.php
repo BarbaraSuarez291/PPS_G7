@@ -17,25 +17,27 @@ include_once('includes/nav.php');
 <body>
 <div class="container contenedor_pedido" >
 <div>
-<div class="card_entradas">
-<h1>Tu pedido fue realizado con exito!</h1>
-<h2>Detalle de compra:</h2>
-<h5>Fecha del evento:  <?php echo $publicacion['fechaEvento']; ?></h5>
-<h5><?php echo $publicacion['descripcion'] ?></h5>
+<div class="card_entradas" style="max-width: 550px;">
 
-<h5 class="card-title text-center"><?php //echo $entradas[$i]['nombre'] ?></h5>
+<h1>Tu pedido fue realizado con exito!</h1>
+<h6>Detalle de pedido:</h6>
+<h6>Fecha del evento:  <?php echo $publicacion['fechaEvento']; ?></h6>
+<h6><?php echo $publicacion['descripcion'] ?></h6>
+
+<h6 class="card-title text-center"><?php //echo $entradas[$i]['nombre'] ?></h6>
 <p> Cantidad: <?php echo $pedido['cantidad'] ?></p>
 <p> Total a pagar: <?php echo $pedido['precio_total'] ?></p>
 <p>Para continuar con la compra:</p>
 <?php if($pedido['metodo_de_pago']== 'transferencia'){  ?>
 
-<p>Elegiste medio de pago como transferencia te pasamos nuestro cbu para que puedas realizarla.</p>
+<strong><p>Elegiste medio de pago como transferencia te pasamos nuestro cbu para que puedas realizarla.</p></strong>
 <p>Una vez hecha la transferencia envianos el comprobante de pago a traves de whatsapp y posterior coordinamos la/s entrega de entrada/s.</p>
-<p>(DATOS PARA REALIZAR EL PAGO)</p>
+<p>CBU : 23234234345564546</p>
+<p>Alias : 23234234345564546</p>
 <?php } else { ?>
   <p>Elegiste como medio de pago efectivo, comunicate con nosotros directamente a traves de whatsapp para coordinar pago y la entrega de las entradas.</p>
   <?php } ?>
-<a href="https://walink.co/3a91c8"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://walink.co/3a91c8" style="color:green;"><i style="color:green;font-size:2.8rem;" class="fa-brands fa-whatsapp"></i>Comunicate con nosotros</a>
 </div>
 
 </div>
